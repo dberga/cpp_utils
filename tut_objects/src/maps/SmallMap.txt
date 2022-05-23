@@ -1,0 +1,4 @@
+Location Cave
+Character Basic Warrior 1
+Item Basic Apple 0 Cave
+LocateAt Warrior Cave

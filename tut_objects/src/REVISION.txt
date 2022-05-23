@@ -1,0 +1,9 @@
+Practica 1:
+
+Un lugar debería tener una lista de artículos.
+
+Un monstruo debería atacar a alguien.
+
+Practica 2:
+
+Todo bien.

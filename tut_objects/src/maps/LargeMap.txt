@@ -1,0 +1,18 @@
+Location Cave
+Location Forest
+Location Swamp
+Location Mountain
+Location River
+Character Basic Warrior 1
+Character Damage Demon 2
+Character Cure Mage 3
+Item Basic Apple 0 Cave
+Item Trap Trap 1 Forest
+Item Potion Potion 2 Swamp
+Item Bomb Bomb 3 Mountain
+Connection North Cave Forest
+Connection North Swamp Cave
+Connection West Mountain Cave
+Connection West Cave River
+LocateAt Warrior Cave
+LocateAt Demon Forest

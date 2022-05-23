@@ -1,0 +1,5 @@
+Location Cave
+Location Forest
+Location Swamp
+Connection North Cave Forest
+Connection North Swamp Cave

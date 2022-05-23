@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/ep101-02/!svn/ver/195/src/functionalTests
+END
+UseItemTests.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/ep101-02/!svn/ver/163/src/functionalTests/UseItemTests.cxx
+END
+LoadMapTests.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/ep101-02/!svn/ver/180/src/functionalTests/LoadMapTests.cxx
+END
+WorldStructureTests.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/ep101-02/!svn/ver/195/src/functionalTests/WorldStructureTests.cxx
+END
+GameInterfaceTests.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/ep101-02/!svn/ver/195/src/functionalTests/GameInterfaceTests.cxx
+END

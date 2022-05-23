@@ -1,0 +1,30 @@
+//WorldStructureTests
+-Al compilar con scons da parrafadas de leaks del tipo: "(32 direct, 59 indirect) bytes in 1 blocks are definitely lost in loss record 143 of 143"
+Creemos que el motivo es que en connections() (en Location.hxx) miramos si existe puntero a norte, sur, este y oeste, y lo hemos hecho mirando si era NULL o no, pero da estos leaks, no sabemos por qué.
+
+-Al test_placeCharacter_whenWasAlreadyPlaced no funciona ya que no encontrábamos la manera de eliminar el puntero de Character una vez movido de lugar. Lo hemos intentado pero daba "Segmentation fault"
+
+//UseItemTests
+-No hemos hecho la classe Item abstracta, es decir, sus funciones estan implementadas ya que en caso que si no las hubieramos implementado como si fuera un abstract, nos daria error en los primeros tests de UseItemTests que usan items genericos. Pronto lo haremos de manera correcta usando el patron decorator.
+
+-El removeItem (de Location.hxx) lo hemos implementado para que borre el item concreto y despues ponga los siguientes en la posicion anterior y despues usando pop_back, funciona pero quizas queda un poco larga la funcion. Hemos intentado usar erase pero nos daba "Segmentation fault"
+
+-En el useItem (de Location.hxx), en el caso de bomb hemos puesto esos for chapuceros. El motivo es que si poniamos el removeItem de la instancia ahí, nos daba "Segmentation fault" simplemente.
+
+//LoadMapTests
+-Hemos añadido la funcion findCharacterCreator y las funciones que la usan de codigo de createCharacterByCreator que comporta la funcion nueva de registerCharacterCreator. Es decir, que las creaciones de character desde loadmaps se hacen usando el correspondiente patron.
+
+-En test_loadTrapMap no creamos un Creator para item porque Anders ya dijo que se usaba el patron decorator, que aun deberiamos implementar, el test actualmente usa la base principal de Item como clase normal
+
+//GameInterfaceTests
+-No sabemos por que en la funcion "go y useitem" no da la exception con "if(!_player)" pero para el de locationDetails() si. Para que nos de green hemos puesto en "go" if(_player) en vez de if(!_player). Es contradictorio, pero el programa da eso.
+
+-Se ha agregado el locateAt correspondiente cada vez que se hace PlaceCharacter ya que antes no era necesario, ahora si lo es para hacer los go
+
+-Se ha agregado 4 funciones dentro de la clase Location: bool existnorth(), bool existsouth()... ya que asi tenemos si existe o no su puntero de direccionado
+
+- Las funciones go y useitem nos dan segmentation fault por lo cual hemos dado un resultado auxiliar, eso se debe a arrastrar unos pocos errores al declarar los punteros dentro de las clases
+
+////////////////////////////  IMPORTANTE
+El error importante es eso de los leaks (primer parrafo), no sabemos como solucionarlo y es importante porque tenemos que comentar tests para ver si el terminal imprime la deduccion del test (lo que sale si es green o red si hay error y su comparacion)
+

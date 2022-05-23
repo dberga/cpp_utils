@@ -1,0 +1,6 @@
+Location Cave
+Location Forest
+Character Basic Warrior 1
+Item Basic Apple 0 Cave
+Item Trap Trap 1 Forest
+LocateAt Warrior Forest
