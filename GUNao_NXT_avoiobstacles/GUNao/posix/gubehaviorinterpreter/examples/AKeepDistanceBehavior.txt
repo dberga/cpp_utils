@@ -1,0 +1,8 @@
+1   START|OnEntry gunxt_startSonarSensor:3;
+2   STOP|OnEntry gunxt_stopMotor:B;gunxt_stopMotor:C;/OnExit gunxt_stopSonarSensor:3;
+3   RUNNING|OnEntry gunxt_runForwardMotor:B,50;gunxt_runForwardMotor:C,50; C++:sleep(10);
+4   RUNNINGMORE|OnEntry gunxt_runForwardMotor:B,90;gunxt_runForwardMotor:C,90; C++:sleep(10);
+5   RUNNINGLESS|OnEntry gunxt_runForwardMotor:B,20;gunxt_runForwardMotor:C,20; C++:sleep(10);
+6   BACKWARD|OnEntry gunxt_runBackwardMotor:B,50;gunxt_runBackwardMotor:C,50; C++:sleep(10);
+7   BACKWARDMORE|OnEntry gunxt_runBackwardMotor:B,90;gunxt_runBackwardMotor:C,90; C++:sleep(10);
+8   BACKWARDLESS|OnEntry gunxt_runBackwardMotor:B,20;gunxt_runBackwardMotor:C,20; C++:sleep(10);

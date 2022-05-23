@@ -1,0 +1,7 @@
+1	TRUE 2
+2   gunxt_valueTouchSensor1	3
+2	gunxt_valueTouchSensor2	3
+3   TRUE 4
+3   FALSE 5
+4   TRUE 2
+5   TRUE 2

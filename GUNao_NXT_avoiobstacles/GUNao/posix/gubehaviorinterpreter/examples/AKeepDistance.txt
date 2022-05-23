@@ -1,0 +1,4 @@
+1   START|OnEntry gunxt_startSonarSensor:3;
+2   STOP|OnEntry gunxt_stopMotor:B;gunxt_stopMotor:C;/OnExit gunxt_stopSonarSensor:3;
+3   DISTANCEBIGGER|OnEntry gunxt_runForwardMotor:B,50;gunxt_runForwardMotor:C,50;/gunxt_runForwardMotor:B,50;gunxt_runForwardMotor:C,50; C++:sleep(10);
+4   DISTANCELOWER|OnEntry gunxt_runBackwardMotor:B,50;gunxt_runBackwardMotor:C,50;/gunxt_runBackwardMotor:B,50;gunxt_runBackwardMotor:C,50; C++:sleep(10);

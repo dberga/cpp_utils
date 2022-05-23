@@ -1,0 +1,6 @@
+1   TRUE 2
+2   TRUE 2
+2   BigDistance3 3
+2   LowDistance3 4
+3   GoodDistance 2
+4   GoodDistance 2

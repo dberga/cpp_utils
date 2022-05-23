@@ -1,0 +1,257 @@
+#VRML_SIM V6.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.221401 -0.958092 -0.181773 4.49015
+  position 1.3705 0.686835 -0.373218
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+DEF Mur1 Solid {
+  translation 0.5 0.05 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 1
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 1
+    }
+  }
+}
+PointLight {
+  location 0 0.345 0
+}
+DEF FLOOR CheckeredFloor {
+}
+DifferentialWheels {
+  translation 0 0.05 0
+  children [
+    DEF ir0 DistanceSensor {
+      translation 0.05 0.02 0
+      rotation 0 0 1 0
+      children [
+        Shape {
+          geometry Cylinder {
+            height 0.004
+            radius 0.008
+          }
+        }
+      ]
+      lookupTable [
+        0 0 0
+        0.05 1000 0
+      ]
+    }
+    DEF cuerpo Transform {
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0 0 1
+            }
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.05
+          }
+        }
+      ]
+    }
+  ]
+  controller "robotlabyrinth"
+}
+DEF Mur2 Solid {
+  translation -0.5 0.05 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 1
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 1
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 1
+    }
+  }
+}
+DEF Mur3 Solid {
+  translation 0 0.05 0.5
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 1
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 1
+    }
+  }
+}
+DEF Mur4 Solid {
+  translation 0 0.05 -0.5
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 1
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 1
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 1
+    }
+  }
+}
+DEF Pared1 Solid {
+  translation 0.1 0.05 0.3
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 0.8
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 0.8
+    }
+  }
+}
+DEF Pared2 Solid {
+  translation -0.1 0.05 0.1
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 0.8
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 0.8
+    }
+  }
+}
+DEF Pared3 Solid {
+  translation -0.2 0.05 -0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 0.4
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 0.4
+    }
+  }
+}
+DEF Pared4 Solid {
+  translation 0.1 0.05 -0.3
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+        }
+      }
+      geometry Box {
+        size 0.01 0.1 0.4
+      }
+    }
+  ]
+  boundingObject Shape {
+    appearance Appearance {
+      material Material {
+        ambientIntensity 1
+      }
+    }
+    geometry Box {
+      size 0.01 0.1 0.4
+    }
+  }
+}

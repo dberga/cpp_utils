@@ -1,0 +1,5 @@
+1   START|OnEntry gunxt_startTouchSensor:1;gunxt_startTouchSensor:2;
+2	RUNNING|OnEntry gunxt_runForwardMotor:B,50;gunxt_runForwardMotor:C,50;/OnExit gunxt_stopTouchSensor:1;gunxt_stopTouchSensor:2;/gunxt_runForwardMotor:B,50;gunxt_runForwardMotor:C,50; C++:sleep(10);
+3   BACKWARD|OnEntry gunxt_runBackwardMotor:B,50;gunxt_runBackwardMotor:C,50; C++:sleep(10);
+4   SPINNINGLEFT|OnEntry gunxt_runBackwardMotor:B,50;gunxt_runForwardMotor:C,50; C++:sleep(10);
+5   SPINNINGRIGHT|OnEntry gunxt_runForwardMotor:B,50;gunxt_runBackwardMotor:C,50; C++:sleep(10);

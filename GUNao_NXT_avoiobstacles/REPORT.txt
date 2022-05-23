@@ -1,0 +1,44 @@
+DAVID BERGA GARRETA
+NIA: 146716
+
+LABORATORY 4 - ROBOTICS - REPORT
+
+////////////////
+Objectives:
+////////////////
+
+1. Using the software architecture of the whiteboard to create behaviors as finite-state machines.
+2. Practice with a finite-state machine interpreter.
+3. Develop behaviors represented as finite-state machines.
+4. Optional: Develop a tool to draw finite-state machines that could be the input to the interpreter.
+////////////////
+Report Questions:
+////////////////
+
+1. Thus the fact that a state is called START does not make it the starting state. What makes it the starting state then?
+
+-> The starting state of all the execution is the state 1. This state 1 would go to other states depending on the changes of state. The name of every state doesn't matter.
+
+2. By the way, if you started the monitor before the interpreter you will see some messages were already posted in the whiteboard. Can you explain why?
+
+-> Because if the as the system remains inside the loop, we will see the messages independently if we run the interpreter before or after.
+
+3. The FSM StopOnObstacle has executed a ringlet. namely, all transitions out of the state START were false, and so it executes its internal part. And in fact, if you are careful, it also sleeps for 10 seconds. Can you find that in the UML diagram of Figure 2 and also on the activities file?
+
+-> Sure, we see that the sleep is found as an activity done not OnEntry or OnExit, it is on post after being in this START state. So if the robot goes to the START again (not the case), it will go to forward again, so the sleep is there to sleep before doing the other states activities, so it will sleep for 10, then the following orders.
+
+4. Now, supply a true value for the sensor. What do you observe? In particular, what do you observe in the terminal where the gubehaviorinterpreter is running? Can you suggest where to place a sleep?
+
+->We observe that it keeps stopped because it prompts to remain in the same state, as STOP (stopped). We see in the terminal the same that we find when it is OnEntry. Would be useful to sleep after a stop, then keeping on changing the state to running, so if it's touched, it would run, if it's touched again, it would stop for 10 sec. Again and again.
+
+5. Explain what happened as you revise the output in all terminals. How would you get back to the situation when the screen where filling up?
+
+-> It had shown the machine prints of Machine.cpp. It prompts to stop the touch sensor 2. The 2nd instructions given i'm not sure if there's somehting missing.
+
+////////////////
+Conclusions:
+////////////////
+
+What is this module about?
+
+-This module tries to interpret the control of the robot basing itself in states and changes of state. We can compare it with a reactive control and with a deliberative control. I can consider this type of control as a mix of the both types of control, because in fact, it has some states that have some prepared instructions (deliberative), but the change of state depends on an esthesis (reactive) that would change the robot's behaviour to another (but maintaining the state, depending on the transition expression). I've considered that, but what is truthful is that it is based on the behaviour-based control, the one used in cybernetics that is focused on the animals manner. The way to see that is that an angry animal doesn't do actions the same way as a quiet one, even if the desired activities would be the same but would be pretty/much different.
