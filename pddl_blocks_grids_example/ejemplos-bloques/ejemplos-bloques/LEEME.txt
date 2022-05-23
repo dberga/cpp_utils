@@ -1,0 +1,9 @@
+Para generar nuevos problemas, entrar en GENERATOR-blocks y hacer:
+
+./blocksworld 10 > problem_10.pddl
+
+Eso genera un problema con 10 bloques.
+
+
+Quizas haga falta compilar el programa 'blocksworld'.
+Seguir las instrucciones del README.

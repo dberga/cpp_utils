@@ -1,0 +1,7 @@
+Para generar otros ejemplos de grids, ir a GENERATOR
+y hacer, por ejemplo:
+
+./grid -x 3 -y 3 -t 1 -k 1 -l 1 > p-3-3-1-1-1.pddl
+
+Quizas haga falta compilar el GENERATOR.
+Seguir las instrucciones del README.
