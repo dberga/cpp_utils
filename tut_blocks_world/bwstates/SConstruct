@@ -1,0 +1,13 @@
+import os, glob
+
+common_env = Environment()
+
+include_paths = ['.']
+lib_paths = []
+common_env.Append( CCFLAGS = ['-O3' ] )
+common_env.Append( LINKFLAGS = ['-O3' ] )
+
+source_files = glob.glob( '*.cxx' )
+object_files = [ common_env.Object( src ) for src in source_files ]
+
+common_env.Program( 'bwstates', object_files )

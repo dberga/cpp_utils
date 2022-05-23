@@ -1,0 +1,21 @@
+Eduard Carbonell Ródenas 146726
+Dani Castaño Monfort 147866
+Víctor López García 152859
+
+Práctica 1: Seam Carving
+
+
+Para compilar vamos a la ruta src/ desde terminal y ponemos la instrucción "make" y, se nos creará el ejecutable el la carpeta principal (es la carpeta anterior, poner en terminal "cd .." para llegar a ella).
+
+Otra manera para compilar es ir directamente dentro de la carpeta principal (P1_146726_147866_152859) desde terminal y ponemos la siguiente línea:
+
+g++ src/*.cpp -o app -std=c++0x
+
+Para ejecutar una vez hayamos compilado, nos situamos en la carpeta principal y ejecutamos el ejecutable llamado app que se nos habrá creado.
+Para ejecutar tenemos que pasar la imagen que queremos modificar, estas imágenes estan dentro de la carpeta images/. Por ejemplo para ejecutar la imagen coast.tga hariamos:
+
+./app image/coast.tga 
+
+Después por pantalla introducimos el nuevo tamaño que queremos para la imagen y seleccionamos la máscara que queremos que se aplique. 
+El resultado se genera dentro de la carpeta principal(P1_146726_147866_152859) con una imagen llamada "image_resized.tga".
+

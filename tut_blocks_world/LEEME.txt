@@ -1,0 +1,18 @@
+Para compilar todo hacer:
+
+* cd bwstates
+* scons
+* cd ..
+* scons
+
+Para generar un problema con 4 bloques usando la semilla 4125
+./bw-generator.sh  4  4125
+
+Para ejecutar el programa (a modificar)
+./blocks-solver  bw-4-4123.prob
+
+En ./problemas
+puede encontrar problemas
+bw-<bloques>-<semilla>
+con <bloques> cada uno.
+

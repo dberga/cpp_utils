@@ -1,0 +1,10 @@
+C:\Documents and Settings\Owner.faakir\Local Settings\Application Data\Temporary Projects\TextureTransfer\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Owner.faakir\Local Settings\Application Data\Temporary Projects\TextureTransfer\bin\Release\TextureTransfer.exe
+C:\Documents and Settings\Owner.faakir\Local Settings\Application Data\Temporary Projects\TextureTransfer\bin\Release\TextureTransfer.pdb
+C:\Documents and Settings\Owner.faakir\Local Settings\Application Data\Temporary Projects\TextureTransfer\obj\Release\TextureTransfer.exe
+C:\Documents and Settings\Owner.faakir\Local Settings\Application Data\Temporary Projects\TextureTransfer\obj\Release\TextureTransfer.pdb
+C:\c#\TextureTransfer\TextureTransfer\obj\Release\TextureTransfer.exe
+C:\c#\TextureTransfer\TextureTransfer\obj\Release\TextureTransfer.pdb
+C:\c#\TextureTransfer\TextureTransfer\obj\Release\ResolveAssemblyReference.cache
+C:\c#\TextureTransfer\TextureTransfer\bin\Release\TextureTransfer.exe
+C:\c#\TextureTransfer\TextureTransfer\bin\Release\TextureTransfer.pdb

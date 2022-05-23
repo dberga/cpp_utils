@@ -1,0 +1,9 @@
+0.5 0.5 0.5 //target
+3 2 3	//posicion
+0 0 -1 //up
+1 //d
+0.5 //h
+200 //f
+-10 10 10 //luz
+0 0 0 //luz_target
+1 1 0 //color

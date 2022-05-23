@@ -1,0 +1,1737 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0092)http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Texture Transfer using Efros &amp; Freeman's Image Quilting Algorithm - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/CodeProject.min.css">
+
+	
+
+<meta name="Description" content="A texture transfer program that implements Efros &amp; Freeman&#39;s texture transfer algorithm; Author: SIDDHARTH JAIN (fd97207); Updated: 11 Mar 2008; Section: General Graphics; Chapter: Multimedia; Updated: 11 Mar 2008">
+<meta name="Keywords" content=".NET2.0, C#1.0, C#2.0, C#3.0, C#, .NET, Dev, Advanced,General Graphics,Multimedia,Free source code, tutorials">
+<meta name="Author" content="SIDDHARTH JAIN (fd97207)">
+<meta name="Rating" content="General">
+<meta name="Robots" content="index, follow, NOODP">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="The Code Project">
+
+<meta name="msapplication-navbutton-color" content="#FF9900">
+<meta name="msapplication-tooltip" content="Your Development Resource.">
+<meta name="msapplication-starturl" content="http://www.codeproject.com/?pinned=true">
+<meta name="msapplication-task" content="name=Homepage;action-uri=http://www.codeproject.com/;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=Latest Articles;action-uri=http://www.codeproject.com/script/articles/Latest.aspx;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=Questions and Answers;action-uri=http://www.codeproject.com/script/Answers/;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=The Lounge;action-uri=http://www.codeproject.com/Lounge.aspx;icon-uri=http://www.codeproject.com/favico.ico">
+
+<link rel="dns-prefetch" href="http://ajax.googleapis.com/"> 
+<link rel="canonical" href="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject.htm">
+
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - MFC/C++" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=2">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C#" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=3">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - VB.NET" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=6">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Mobile" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=18">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - ASP.NET" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=4">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="http://www.codeproject.com/webservices/LoungeRSS.aspx">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="http://www.codeproject.com/info/OpenSearch.xml">
+
+	<!--<base target="_top">--><base href="." target="_top">
+	<link rel="icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="http://www.codeproject.com/images/FavIcon-Apple.png" type="image/png">
+<script async="" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/beacon.js"></script><script type="text/javascript" language="Javascript">//<![CDATA[
+if(top!=self && !/https?:\/\/([a-zA-Z]+\.)?facebook.com\//gi.test(top.location.href))top.location.href=location.href; if(typeof(DemoUrl)!='undefined')document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh" con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+forumDir = '/script/Forums/';
+staticServer = 'http://s.codeproject.com';
+allowModeration = false;
+allowRating = true;
+var smoothScroll = true;
+Selected        = -1;
+oldTitle        = document.title;
+minMessageScore = 1;
+minMessageScore = 5;
+abuseScore      = -2;
+spamScore       = -1;
+
+
+//]]>
+</script>
+
+	
+<script type="text/javascript">
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "13507173" });
+  (function() {
+	var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+	s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+	el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  &lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=13507173&amp;cv=2.0&amp;cj=1" id="ctl00_Auditing_ComScore" /&gt;
+</noscript>
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script type="text/javascript" async="" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/ga.js"></script>
+
+
+</head>	
+
+<body class="chrome chrome20">
+
+
+
+
+<a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#Main"><img alt="Click here to Skip to main content" class="access-link" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t.gif"></a>
+
+
+<div class="page-background">
+	<div id="A" class="container-content">
+
+		
+		
+
+		
+
+		
+		
+
+<div class="container nav-memberbar clearfix">
+	<div class="member-stats float-left">9,050,044 members and growing! (38,161 online)</div>
+	<div class="float-left"></div>
+
+	<div class="float-right">
+		&nbsp;&nbsp;
+	</div>
+
+	<div class="float-right">
+		
+
+<span class="tooltip member-message">
+	<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/envelope11.gif" width="11px" height="11px" style="vertical-align:bottom;padding-bottom:3px">
+	<div class="tooltip-flyout small-text">
+		
+		<div id="ctl00_MemberMenu_Messages_Confirm"><a id="ctl00_MemberMenu_Messages_EmailConfirm" href="http://www.codeproject.com/script/Membership/SendConfirmRequest.aspx?rp=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt">Your email address needs to be confirmed.</a></div>
+	</div>
+</span><span id="ctl00_MemberMenu_CurRat" class="tooltip">
+				<a id="ctl00_MemberMenu_MyProfile" href="http://www.codeproject.com/script/Membership/View.aspx?mid=9218408">davidberga</a><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/arrow-down-16.png" style="width:16px;height:16px;vertical-align:bottom">
+				<div class="tooltip-flyout" style="width:110px !important">
+					<div><a id="ctl00_MemberMenu_MySettingsDefault" href="http://www.codeproject.com/script/Membership/Modify.aspx">My Settings</a></div>
+					<div id="ctl00_MemberMenu_MSOpt"><a id="ctl00_MemberMenu_MySettings" href="https://www.codeproject.com/script/Membership/Modify.aspx"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/secure.png" width="13px" height="14px" style="vertical-align:middle;border:0">My Settings (SSL)</a></div>
+					<div><a id="ctl00_MemberMenu_MyContacts" href="http://www.codeproject.com/script/Membership/ListContacts.aspx">My Contact info</a></div>
+					<div><a id="ctl00_MemberMenu_MyBookmarks" href="http://www.codeproject.com/script/Bookmarks/List.aspx?obtid=2">My Bookmarks</a></div>
+					
+					<div><a id="ctl00_MemberMenu_MyCodeProject" href="http://www.codeproject.com/script/Membership/MyWatchedItems.aspx">My Watched Items</a></div>
+					<div><a id="ctl00_MemberMenu_MyArticles" href="http://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=9218408">My Articles</a></div>
+					<div><a id="ctl00_MemberMenu_MyMessages" href="http://www.codeproject.com/script/Forums/Messages.aspx?fmid=9218408">My Messages</a></div>
+					<div><a id="ctl00_MemberMenu_MyQuestions" href="http://www.codeproject.com/script/Answers/MemberPosts.aspx?tab=questions&mid=9218408&showall=True">My Questions</a></div>
+					<div><a id="ctl00_MemberMenu_MyAnswers" href="http://www.codeproject.com/script/Answers/MemberPosts.aspx?tab=answers&mid=9218408&showall=True">My Answers</a></div>
+					<div><a id="ctl00_MemberMenu_MyComments" href="http://www.codeproject.com/script/comments/MemberComments.aspx?mid=9218408">My Comments</a></div>
+					
+				</div>
+			</span><span id="ctl00_MemberMenu_TotalPoints" title="Total reputation points 400" class="member-rep-box bronze" style="margin-left:0"><a href="http://www.codeproject.com/script/Reputation/List.aspx?mid=9218408">400</a></span>
+			&nbsp;
+			<a id="ctl00_MemberMenu_Signout" href="http://www.codeproject.com/script/Membership/LogOff.aspx?rp=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt">Sign out</a>
+
+		
+	</div>
+</div>
+		
+
+		
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tbody><tr>
+			<td class="page-header"><a href="http://www.codeproject.com/"><img id="ctl00_Logo" title="The Code Project" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/logo225x90.gif" alt="Home" style="border-width:0px;"></a></td>
+			<td class="page-header" align="right">
+				<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="728x90" lqm_tags=".NET2.0, C#1.0, C#2.0, C#3.0, C#, .NET, Dev, Advanced,rating4.5"><iframe id="lqmad1" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+			</td>
+		</tr></tbody></table>
+
+		<table cellpadding="0" cellspacing="0" class="contrast1-background extended"><tbody><tr><td nowrap="nowrap">
+			
+
+<div class="navbar clearfix">
+<ul id="nav" class="openable">
+
+<li><a id="ctl00_TopNavBar_Home" class="down" href="http://www.codeproject.com/">Home</a>
+
+
+</li><li class=""><a id="ctl00_TopNavBar_Art" class="down selected" href="http://www.codeproject.com/script/Articles/Latest.aspx">Articles</a>
+
+	<ul>
+		<li class=""><a id="ctl00_TopNavBar_ArtTopicList" class="fly last" onmouseover="navBarMenu.ShowMap(this, &#39;siteMap&#39;);" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="fly-menu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout"><li>
+				<div id="siteMap" class="tooltip-flyout">
+					<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/animated.gif" alt="loading" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li></ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="http://www.codeproject.com/search.aspx">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=6">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="http://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="http://www.codeproject.com/search.aspx?aidlst=152&sa_us=True">Beginner Articles</a></li>
+		
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="http://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly" href="http://www.codeproject.com/script/Articles/Submit.aspx">Submit an Article or Tip</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly break" href="http://www.codeproject.com/script/Articles/BlogFeed.aspx">Post your Blog</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="http://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly last" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Answers" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">Quick Answers</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#_comments">Ask a Question about this article</a></li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly" href="http://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=842" style="padding-left:30px">VB.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=78" style="padding-left:30px">C++ questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=308" style="padding-left:30px">C#4.0 questions</a></li>
+			
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Forums" href="http://www.codeproject.com/script/Forums/List.aspx">Discussions</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="http://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="fly-menu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3304/Work-Training-Issues.aspx">Work &amp; Training Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="fly-menu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="fly-menu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1653293/VS-11-NET-4-5.aspx">VS 11 &amp; .NET 4.5</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1540733/Sharepoint.aspx">Sharepoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+
+	</ul>
+
+</li>
+
+<li class=""><a id="ctl00_TopNavBar_Zones" href="http://www.codeproject.com/Zones/index.aspx">Zones</a>
+
+	<ul>
+		<!--<li class="heading">Zones</li>-->
+		<li><a href="http://www.codeproject.com/Zones/Commerce/" class="fly">The Commerce Zone</a></li><li><a href="http://www.codeproject.com/Zones/Mobile/" class="fly">The Mobile &amp; App Zone</a></li><li><a href="http://www.codeproject.com/Zones/Cloud/" class="fly">The Cloud Zone</a></li><li><a href="http://www.codeproject.com/Zones/Hardware/" class="fly">The Hardware Zone</a></li><li><a href="http://www.codeproject.com/Zones/Parallelism/" class="fly">The Parallelism Zone</a></li><li><a href="http://www.codeproject.com/Zones/WPF-Silverlight/" class="fly">The WPF / Silverlight Zone</a></li><li><a href="http://www.codeproject.com/Zones/Flex-Flash/" class="fly">The Flex / Flash Zone</a></li><li><a href="http://www.codeproject.com/Zones/HTML-CSS/" class="fly">The HTML5 / CSS3 Zone</a></li><li><a href="http://www.codeproject.com/Zones/SharePoint/" class="fly">SharePoint Zone</a></li><li><a href="http://www.codeproject.com/Zones/Windows-8/" class="fly">The Windows 8 Zone</a></li><li><a href="http://www.codeproject.com/Zones/SqlServer/" class="fly">The SQL Zone</a></li><li><a href="http://www.codeproject.com/Zones/WhitePapers/" class="fly break">WhitePapers / Webcasts</a></li>
+		<li><a id="ctl00_TopNavBar_Solutions" class="fly last" href="http://www.codeproject.com/KB/solution-center/">Solutions Center</a></li>
+	</ul>
+
+</li>
+
+
+
+
+
+
+
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Features" href="http://www.codeproject.com/Feature/">Features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Catalog" class="fly" href="http://www.codeproject.com/script/Catalog/List.aspx">Component &amp; Service Catalog</a></li>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="http://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="http://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="http://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="http://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly last" href="http://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li></li>
+	</ul>
+
+</li>
+
+
+<li class=""><a id="ctl00_TopNavBar_Lounge" href="http://www.codeproject.com/Lounge.aspx">Community</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="http://www.codeproject.com/Insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly" href="http://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="http://www.codeproject.com/feature/weirdandwonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="http://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="http://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="http://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly" href="http://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		<li><a id="ctl00_TopNavBar_Companies" class="fly" href="http://www.codeproject.com/script/Membership/Profiles.aspx?mgtid=1&mgm=True">Company Listings</a></li>
+
+		
+		<li class="fly"><a href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="fly-menu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li>
+		
+	</ul>
+
+</li>
+
+
+<li class="" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="http://www.codeproject.com/KB/FAQs/">Help!</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="http://www.codeproject.com/info/guide.aspx">What is 'The Code Project'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="http://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break" href="http://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://lakequincy.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly last" href="http://www.codeproject.com/info/about.aspx">About Us</a></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+		</td><td align="right">
+			
+
+<div class="search-bar">
+
+<form method="get" action="http://www.codeproject.com/search.aspx" name="Search" class="tight">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="search"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="" name="q"></td><td><input type="image" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/search.gif"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none; ">
+	<b>Search within:<br></b>
+		
+		<input type="radio" id="sb_kw" name="sbo" value="kw" checked="true"><label for="sb_kw">Articles</label><br>
+<input type="radio" id="sb_qa" name="sbo" value="qa"><label for="sb_qa">Quick Answers</label><br>
+<input type="radio" id="sb_fm" name="sbo" value="fm"><label for="sb_fm">Messages</label><br>
+<input type="radio" id="sb_ctlk" name="sbo" value="ctlk"><label for="sb_ctlk">Product Catalog</label><br>
+
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+		</td></tr></tbody></table>
+		
+
+		
+		<div class="container-article hreview-aggregate"> 
+		
+			
+			<div class="container-header">
+				<div id="ctl00_Header" class="header">
+
+					<a name="Main"></a>
+
+					
+					<a name="_articleTop" id="_articleTop"></a>
+					
+
+<div class="clearfix hover-container">
+
+	
+	<div class="float-right action-links"> 
+		<span id="SBI"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/share_drop24.png" id="ctl00_TitleArea_ActionLinks_AddTo_Img" width="37" height="24" alt="add" style="vertical-align:middle">
+</span>
+<div id="ATD" class="list-socialbookmark" style="left: 656px; top: 20px; "><div><a class="AddTo" title="Add this page to Twitter" onclick="return socialLinks.addto(0);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Twitter.gif" width="16px" height="16px" border="0"> Twitter</a> </div><div><a class="AddTo" title="Add this page to Digg" onclick="return socialLinks.addto(1);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Digg.png" width="16px" height="16px" border="0"> Digg</a> </div><div><a class="AddTo" title="Add this page to Facebook" onclick="return socialLinks.addto(2);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Facebook.png" width="16px" height="16px" border="0"> Facebook</a> </div><div><a class="AddTo" title="Add this page to Del.icio.us" onclick="return socialLinks.addto(3);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Delicious.png" width="16px" height="16px" border="0"> Del.icio.us</a> </div><div><a class="AddTo" title="Add this page to Reddit" onclick="return socialLinks.addto(4);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Reddit.png" width="16px" height="16px" border="0"> Reddit</a> </div><div><a class="AddTo" title="Add this page to Stumbleupon" onclick="return socialLinks.addto(5);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_stumbleupon.png" width="16px" height="16px" border="0"> Stumbleupon</a> </div><div><a class="AddTo" title="Add this page to Newsvine" onclick="return socialLinks.addto(6);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Newsvine.png" width="16px" height="16px" border="0"> Newsvine</a> </div><div><a class="AddTo" title="Add this page to Technorati" onclick="return socialLinks.addto(7);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Technorati.png" width="16px" height="16px" border="0"> Technorati</a> </div><div><a class="AddTo" title="Add this page to Mr. Wong" onclick="return socialLinks.addto(8);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_MrWong.png" width="16px" height="16px" border="0"> Mr. Wong</a> </div><div><a class="AddTo" title="Add this page to Yahoo!" onclick="return socialLinks.addto(9);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Yahoo.png" width="16px" height="16px" border="0"> Yahoo!</a> </div><div><a class="AddTo" title="Add this page to Google" onclick="return socialLinks.addto(10);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Google.png" width="16px" height="16px" border="0"> Google</a> </div><div><a class="AddTo" title="Add this page to Windows Live" onclick="return socialLinks.addto(11);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/AddTo_Live.png" width="16px" height="16px" border="0"> Windows Live</a> </div><div><a class="AddTo" title="Send as Email" onclick="return socialLinks.addto(12);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#"><img align="absmiddle" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/envelope.gif" width="16px" height="16px" border="0"> Send as Email</a> </div></div> 
+ 
+
+<span class="tooltip">
+	<a id="ctl00_TitleArea_ActionLinks_ArticleBmk_ImgBt" title="Bookmark" alternatetext="Bookmark" name="bm_24172_2" onclick="return bookmarkMe(24172,2,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=24172&amp;obtid=2&amp;action=AddBookmark&amp;bio=true&#39;,true);" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=24172&obtid=2&action=AddBookmark&bio=true" style="display:inline-block;height:24px;width:24px;vertical-align:middle;"><img title="Bookmark" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/bookmark.png" alt="" style="border-width:0px;"></a>
+
+
+<span id="ctl00_TitleArea_ActionLinks_ArticleBmk_StatusMsg" class="tiny-text" style="display:none" name="bm_24172_2"></span>
+ 
+	<div class="speech-bubble-container-up">
+		<div class="speech-bubble-up">Add to your CodeProject bookmarks</div>
+		<div class="speech-bubble-pointer-up">
+			<div class="speech-bubble-pointer-up-inner"></div>
+		</div>
+	</div>
+</span>
+
+
+<a id="ctl00_TitleArea_ActionLinks_PrintLnk" class="tooltip" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?display=Print">
+	<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/print.gif" width="24px" height="24px" style="vertical-align:middle;border:0">
+	<div class="speech-bubble-container-up">
+		<div class="speech-bubble-up">Print Article</div>
+		<div class="speech-bubble-pointer-up">
+			<div class="speech-bubble-pointer-up-inner"></div>
+		</div>
+	</div>
+</a>
+	</div>
+
+	<div class="container">
+		
+		<div class="breadcrumb float-left"><a href="http://www.codeproject.com/script/Content/SiteMap.aspx"><span class="sitemap-anchor" onmouseover="navBarMenu.ShowMap(this,&#39;map&#39;);"><img width="16px" height="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/sitemap16.png" border="0" alt="Site map" style="vertical-align:middle"><div id="map" class="tooltip-flyout"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/animated.gif" style="margin:150px;width:100px;height:100px;border:0;"></div></span></a> » <a href="http://www.codeproject.com/Chapters/3/Multimedia.aspx">Multimedia</a> » <a href="http://www.codeproject.com/KB/graphics/">General Graphics</a> » <a href="http://www.codeproject.com/KB/graphics/#Graphics">Graphics</a></div>
+	</div>
+
+	
+	<div id="ctl00_TitleArea_InfoArea" class="float-right pad-top">
+		
+
+<div class="infobox">
+	<table class="tight small-text" cellpadding="0" cellspacing="1">
+	<tbody><tr><td>Licence&nbsp;</td><td><a href="http://www.codeproject.com/info/cpol10.aspx" title="The Code Project Open License (CPOL)">CPOL</a></td></tr>
+	
+	<tr><td>First Posted&nbsp;</td><td nowrap="nowrap"><b>7 Mar 2008</b></td></tr>
+	<tr><td>Views&nbsp;</td><td><b>36,964</b></td></tr>
+	
+	<tr><td>Downloads&nbsp;</td><td><b>719</b></td></tr>
+		
+	
+	<tr><td>Bookmarked&nbsp;</td><td><b>32 times</b></td></tr>
+	
+	
+
+	
+	
+	
+	</tbody></table>
+</div>	
+	</div>
+
+	
+	<div class="item">
+	<h1 id="ctl00_TitleArea_ArticleTitle" class="fn">Texture Transfer using Efros &amp; Freeman's Image Quilting Algorithm</h1> 
+	</div>
+
+	
+	<div class="author">
+		By <b><a rel="author" href="http://www.codeproject.com/script/Membership/View.aspx?mid=860577">SIDDHARTH JAIN (fd97207)</a></b> | 
+		11 Mar 2008 
+		
+		| <a id="ctl00_TitleArea_ArticleInfoLink" href="http://www.codeproject.com/script/Articles/Types.aspx?#Article">Article</a>
+
+		
+		
+	</div>
+	
+	<div class="tags">
+	<span id="ctl00_TitleArea_TagsList_TagWrp" class="tags">
+	
+	
+	
+	<span id="ctl00_TitleArea_TagsList_VisibleTags"><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/.NET2.0">.NET2.0</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/C--hash--1.0">C#1.0</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/C--hash--2.0">C#2.0</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/C--hash--3.0">C#3.0</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/C--hash--">C#</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/.NET">.NET</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/Dev">Dev</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/Advanced">Advanced</a></span></span> 
+
+	
+	
+</span>
+
+	</div>
+
+	
+	<div class="abstract summary"><span id="ctl00_TitleArea_ArticleDescr">A texture transfer program that implements Efros &amp; Freeman's texture transfer algorithm</span></div>
+</div>
+
+
+
+					
+
+				</div>
+
+				<div id="ctl00_HeadSide" class="header-sidebar">
+					<div class="align-left" style="height:24px">
+						
+
+
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+					</div>
+
+					
+
+<div class="bold pad-top">See Also</div>
+<ul class="outdent small-text" style="margin-left:5px">
+	<li><a id="ctl00_SeeAlso_LikeThis" href="http://www.codeproject.com/search.aspx?q=Texture+Transfer+using+Efros+%26+Freemans+Image+Quilting+Algorithm">More like this</a></li>
+	<li><a id="ctl00_SeeAlso_ByAuthor" href="http://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=860577">More by this author</a></li>
+</ul>
+
+				</div>
+
+			</div>
+			
+
+			
+			<div id="ctl00_Nav" class="container-nav">
+				<div id="ctl00_TabContainer" class="tabs-container clearfix">
+
+					<div class="float-left">
+						
+						
+
+<div class="tabs float-left"><table cellpadding="0" cellspacing="0"><tbody><tr>
+	<td class="tab-selected">Article</td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=24172">Browse Code</a></td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/Statistics.aspx?aid=24172">Stats</a></td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/ListVersions.aspx?aid=24172">Revisions (3)</a></td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=24172">Alternatives</a></td>
+</tr></tbody></table></div>	
+
+
+						
+						<div class="float-left" style="margin-left:15px">
+							<div id="ctl00_CurRat" class="tooltip anchorLink" style="cursor:pointer" onclick="scrollToAnchor(&#39;#_rating&#39;);" name="CurRat_24172">
+								
+
+<table cellpadding="0" cellspacing="0" class="small-text">
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars" style="height:24px;width:120px;position:relative;">
+	<div class="clipped align-left float-left" style="height:24px;width:111px;">
+		<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/stars-fill.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:24px;width:9px;position:relative;">
+		<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/stars-empty.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;<span class="rating">4.66</span> (<span class="count">11 votes</span>)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+								<div id="ctl00_RB" class="speech-bubble-container-up">
+									<div class="speech-bubble-up" style="width:150px !important">
+										            
+<div>
+<table class="feature" width="100%" height="50px" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0"><tbody><tr><td class="chart-column"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">1</span></td>
+<td class="chart-column"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">2</span></td>
+<td class="chart-column"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">3</span></td>
+<td class="chart-column"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pollcol.gif" width="20pxpx" height="18px" border="0px" alt="3 votes, 27.3%" title="3 votes, 27.3%"><br><span title="3 votes">4</span></td>
+<td class="chart-column"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pollcol.gif" width="20pxpx" height="50px" border="0px" alt="8 votes, 72.7%" title="8 votes, 72.7%"><br><span title="8 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.66/5 - 11 votes</div><div class="small-text align-center subdue">μ 4.66, σ<sub>a</sub> 0.82 [<a href="http://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+									</div>
+									<div class="speech-bubble-pointer-up">
+										<div class="speech-bubble-pointer-up-inner"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="float-left">
+							&nbsp; 
+							<a id="discussAnch" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#_comments" class="tooltip anchorLink">
+							<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/discuss.gif" width="24px" height="24px" alt="Discuss" style="vertical-align:middle;border:0">
+								<div class="speech-bubble-container-up">
+									<div class="speech-bubble-up">Discuss this article</div>
+									<div class="speech-bubble-pointer-up">
+										<div class="speech-bubble-pointer-up-inner"></div>
+									</div>
+								</div>
+							</a>
+							<span id="ctl00_CmtCnt" class="subdue small-text align-middle" style="margin-left:-4px">13</span>
+
+							&nbsp; 
+
+							   
+						</div>
+
+					</div>
+
+				</div>
+
+				
+			</div>
+			
+
+			
+			<div class="container-text">
+
+				<div id="AT" class="text">
+					
+					
+					
+					
+
+						
+							
+			
+					<div id="ctl00_confirmError" class="callout small-text" style="padding:10px;margin:20px;"><img style="float:left;margin-right:10px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/warning_32.png" width="32px" height="32px"><b>Is your email address OK?</b>
+					You are signed up for our newsletters but your email address is either unconfirmed, or has not 
+					been reconfirmed in a long time. Please click 
+					<a id="ctl00_RequestConfirmLink2" href="http://www.codeproject.com/script/Membership/SendConfirmRequest.aspx?rp=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt">here</a> to have a 
+					confirmation email sent so we can confirm your email address and start sending you newsletters 
+					again. Alternatively, you can 
+					<a id="ctl00_SubscribeLink2" href="http://www.codeproject.com/script/Membership/Subscribe.aspx?rp=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt">update your subscriptions</a>.</div><form name="aspnetForm" method="post" action="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject.htm" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjExOTQzNjk4Mw9kFgJmD2QWAgIHD2QWCAIRD2QWAgIBD2QWBmYPDxYCHgtOYXZpZ2F0ZVVybAUyL3NjcmlwdC9BcnRpY2xlcy9BZG1pbi9FZGl0b3JDaG9pY2UuYXNweD9haWQ9MjQxNzJkZAICDw8WAh8ABTgvc2NyaXB0L0F3YXJkcy9BZG1pbi9Bd2FyZE9iamVjdC5hc3B4P29iaWQ9MjQxNzImb2J0aWQ9MmRkAgoPDxYCHwAFLy9zY3JpcHQvQXJ0aWNsZXMvQWRtaW4vUXVldWVFZGl0LmFzcHg/YWlkPTI0MTcyZGQCEw9kFgICAQ9kFgICAg8WAh4JaW5uZXJodG1sBQIxM2QCFQ9kFgICCw9kFggCAQ8WAh4HVmlzaWJsZWcWBAIBDw8WAh8ABXYvc2NyaXB0L01lbWJlcnNoaXAvU2VuZENvbmZpcm1SZXF1ZXN0LmFzcHg/cnA9JTJmQXJ0aWNsZXMlMmYyNDE3MiUyZlRleHR1cmUtVHJhbnNmZXItdXNpbmctRWZyb3MtRnJlZW1hbi1zLUltYWdlLVF1aWx0ZGQCAw8PFgIfAAVtL3NjcmlwdC9NZW1iZXJzaGlwL1N1YnNjcmliZS5hc3B4P3JwPSUyZkFydGljbGVzJTJmMjQxNzIlMmZUZXh0dXJlLVRyYW5zZmVyLXVzaW5nLUVmcm9zLUZyZWVtYW4tcy1JbWFnZS1RdWlsdGRkAgIPFgIeBmFjdGlvbgVCL0FydGljbGVzLzI0MTcyL1RleHR1cmUtVHJhbnNmZXItdXNpbmctRWZyb3MtRnJlZW1hbi1zLUltYWdlLVF1aWx0FgoCAQ8PFgQfAAU2L3NjcmlwdC9BcnRpY2xlcy9TdWJtaXNzaW9uV2l6YXJkLmFzcHg/YXQ9MSZhcGlkPTI0MTcyHwJnZGQCAw9kFgICAQ8WAh8CaGQCBQ9kFgICAg9kFgICAQ8QZGQWAGQCCw8WAh4LXyFJdGVtQ291bnQCAWQCDQ9kFgICAQ8WAh4EVGV4dAV7PGEgY2xhc3M9ImFuY2hvckxpbmsiIGhyZWY9Ii9BcnRpY2xlcy8yNDE3Mi9UZXh0dXJlLVRyYW5zZmVyLXVzaW5nLUVmcm9zLUZyZWVtYW4tcy1JbWFnZS1RdWlsdCNfYXJ0aWNsZVRvcCI+QXJ0aWNsZSBUb3A8L2E+ZAIKDw8WBB8FBQlQZXJtYWxpbmsfAAVCL0FydGljbGVzLzI0MTcyL1RleHR1cmUtVHJhbnNmZXItdXNpbmctRWZyb3MtRnJlZW1hbi1zLUltYWdlLVF1aWx0ZGQCGQ8WAh8FBSpDb3B5cmlnaHQgMjAwOCBieSBTSURESEFSVEggSkFJTiAoZmQ5NzIwNylkAhcPZBYCAgUPDxYCHwJoZGRkrR0un6cKDTthvJ6A7osFxrBVfTY=">
+</div>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAK8rf3DAgLAlMXDBwLBlMXDBwLClMXDBwLDlMXDBwLElMXDBwLP+++tCwK5upDkC1OcEXS3YGh66BAf00aI8Et+r+Si">
+</div>
+
+						<a id="ctl00_AddAlternative" title="Write a related article about upgrades or translate this into a different language." class="button add-alternative float-right" href="http://www.codeproject.com/script/Articles/SubmissionWizard.aspx?at=1&apid=24172">Add your own<br>alternative version</a>
+
+						<!-- Article Text Start -->
+						<div id="contentdiv">
+						
+
+
+
+
+<ul class="download">
+<li><a href="http://www.codeproject.com/KB/graphics/quilting/TextureTransfer.zip">Download Source code version 1 (uses BackgroundWorker) - this is the recommended version to use - 191 KB</a></li>
+
+<li><a href="http://www.codeproject.com/KB/graphics/quilting/TextureTransferUsingTPL.zip">Download Source code version 2 (uses Task Parallel Library) - new code added on 7/26/10 - 86.62 KB </a></li>
+</ul>
+<img width="512" height="320" id="_x0000_i1025" alt="Screenshot" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/screenshot.jpg" border="0" complete="true"> 
+
+<h2>Introduction</h2>
+
+<p>This article describes a texture transfer program I developed based on Efros &amp; Freeman's SIGGRAPH 2001 paper: </p>
+
+<ul>
+<li>Image Quilting for texture synthesis and transfer: <a href="http://graphics.cs.cmu.edu/people/efros/research/quilting/quilting.pdf">pdf</a>, <a href="http://graphics.cs.cmu.edu/people/efros/research/quilting/efros-siggraph01.ppt">ppt</a> </li>
+</ul>
+
+<p>Texture transfer is the process by which the texture of a source image is transferred to a target image. The result is that we get an image that looks like the target image but it is made out of the texture of the source image e.g. below are shown two images -- source, target and the result of transferring the texture of the source onto the target: 
+</p><table cellspacing="0">
+<tbody>
+<tr>
+<td><img width="197" height="133" alt="rice image" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/rice.jpg" complete="true"></td>
+
+<td><img width="90" height="90" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/plus.gif" complete="true"></td>
+
+<td><img width="120" height="146" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/bill.jpg" complete="true"></td>
+
+<td><img width="91" height="42" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/rightarrow.gif" complete="true"></td>
+
+<td><img width="120" height="146" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/layer1.jpg" complete="true"></td>
+
+<td><img width="91" height="42" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/rightarrow.gif" complete="true"></td>
+
+<td><img width="120" height="146" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/layer2.jpg" complete="true"></td>
+
+<td><img width="91" height="42" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/rightarrow.gif" complete="true"></td>
+
+<td><img width="120" height="146" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/layer3.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><strong>source</strong></td>
+
+<td></td>
+
+<td><strong>target</strong></td>
+
+<td></td>
+
+<td><strong>first iteration</strong></td>
+
+<td></td>
+
+<td><strong>second iteration</strong></td>
+
+<td></td>
+
+<td><strong>third iteration</strong></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+
+<p>The source is an image of rice and the target is the man's face. After texture transfer we get a face that looks as though it is made out of rice. How do we do this? The idea is to take patches of rice and weave them together seamlessly into the image of the face. Bright patches of rice will goto areas where the face is bright and dark patches will goto areas where the face is dark. To illustrate the concept, in the image below the boundaries of the individual patches have been colored in red. You can find each of these patches in the rice image if you look for them hard enough. </p>
+
+<p><img width="231" height="281" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/bill_cuts01.jpg" complete="true"></p>
+
+<h2>The Texture Transfer Algorithm</h2>
+
+<p>The texture transfer algorithm has to synthesize an image from the pixels of the source. Locally the result should have the appearance of the source texture but when looked at globally the result should look like the target. The texture transfer proceeds by synthesizing an image in faster scan order in units of block. You can control the size of the block in the setting window and it is set to 27x27 pixels by default. Whenever a block in the result has to be synthesized the algorithm needs to find a suitable block in the source texture that satisfies two criteria: </p>
+
+<ol>
+<li>The block should match the target, meaning bright patches of rice should go to bright patches on the man's face. </li>
+
+<li>After making some cuts, the block should fit in seamlessly with its adjoining neighbors so that we don't see any visual discontinuities and don't even realize that the result is actually made up of many blocks put size by side like a jigsaw puzzle. </li>
+</ol>
+
+<p>To this end for every patch in the source image the algorithm computes two difference measures d<sub>1</sub>, d<sub>2</sub> that quantify how well criterion 1 and 2 above are satisfied and their weighted sum </p>
+
+<ul>
+<li>d = (1-a)d<sub>1</sub> + ad<sub>2</sub> </li>
+</ul>
+
+<p>The algorithm chooses the patch that minimizes d. The function <code>GetMatchingBlock</code> in <em>TextureTransferTool.cs</em> does this computation. The next step after choosing a matching block is to cut it appropriately so that it fits in seamlessly with the adjoining neighbors. It is because of these cuts that the patches in figure have jagged boundaries. If no cuts were made the boundaries would be straight lines and we would get something that looked like following image: </p>
+
+<p><img width="231" height="281" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/bill_no_cuts.jpg" complete="true"></p>
+
+<p>The algorithm synthesizes the result in several passes or iterations starting with a low value of a (a=0.1) and initial block size set to 27x27 pixels by default and decreasing block size by 1/3 rd in every iteration and increasing alpha until a=0.9 in the final iteration. The number of iterations to do is set to 3 by default. The following code snippet from function <code>OnDoWork</code> in <em>TextureTransferTool.cs</em> shows the main texture transfer code. The texture transfer runs in a separate <code>BackgroundWorker</code> thread so that it does not block the UI thread from processing keyboard and mouse events. </p>
+
+<div class="pre-action-link" id="premain0" width="100%" style="display:block"><img id="preimg0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/minus.gif" style="cursor: pointer; " height="9" width="9" preid="0"><span id="precollapse0" style="cursor: pointer; margin-bottom: 0px; " preid="0"> Collapse</span><span> | </span><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" preid="0">Copy Code</a></div><pre lang="cs" id="pre0" style="margin-top: 0px; "><span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = <span class="code-digit">0</span>; i &lt; numIterations; i++)
+            {
+                <span class="code-keyword">bool</span> isFirstIteration = i == <span class="code-digit">0</span>;
+                <span class="code-comment">//</span><span class="code-comment"> from Alyosha's paper
+</span>                <span class="code-keyword">double</span> alpha = <span class="code-digit">0</span>.<span class="code-digit">8</span> * i / (numIterations - <span class="code-digit">1</span>) + <span class="code-digit">0</span>.<span class="code-digit">1</span>;     
+                nextX = <span class="code-digit">0</span>; nextY = <span class="code-digit">0</span>; nextBlockWidth = blockWidth; nextBlockHeight = 
+                    blockHeight; nextOverlapX = <span class="code-digit">0</span>; nextOverlapY = <span class="code-digit">0</span>;
+                <span class="code-keyword">bool</span> completed = <span class="code-keyword">false</span>;
+                <span class="code-keyword">while</span> (!completed &amp;&amp; !CancellationPending)
+                {
+                    Point q = <span class="code-keyword">new</span> Point(nextX, nextY);  
+                    <span class="code-comment">//</span><span class="code-comment"> get matching block from src which will be pasted at location q in img
+</span>                    p = GetMatchingBlock(img, src, target, q, nextOverlapX, nextOverlapY,
+                        nextBlockWidth, nextBlockHeight, alpha, isFirstIteration, probe,
+                        <span class="code-keyword">out</span> eh, <span class="code-keyword">out</span> ev);                    
+                    <span class="code-comment">//</span><span class="code-comment"> the horizontal and vertical cuts will ensure that the patch
+</span>                    <span class="code-comment">//</span><span class="code-comment"> from src will fit in seamlessly when it is pasted onto img
+</span>                    <span class="code-keyword">int</span>[] Hcut = findHcut(eh);  <span class="code-comment">//</span><span class="code-comment"> compute the horizontal cut
+</span>                    <span class="code-keyword">int</span>[] Vcut = findVcut(ev);  <span class="code-comment">//</span><span class="code-comment"> compute the vertical cut
+</span>                    <span class="code-comment">//</span><span class="code-comment"> cut the block per the horizontal and vertical cuts and then
+</span>                    <span class="code-comment">//</span><span class="code-comment"> paste it onto img
+</span>                    cutandpaste(src, p, img, q, Hcut, Vcut, nextBlockWidth,
+                        nextBlockHeight, displayBoundaryCut);
+                    <span class="code-comment">//</span><span class="code-comment"> calculate how much of texture transfer is complete; 1-&gt;fully 
+</span>                    <span class="code-comment">//</span><span class="code-comment"> completed
+</span>                    <span class="code-keyword">double</span> fractionComplete = CalculateFractionComplete(i, numIterations, 
+                        nextX, nextY, nextBlockWidth,
+                        nextBlockHeight, imgWidth, imgHeight);
+                    <span class="code-keyword">int</span> percentComplete = (<span class="code-keyword">int</span>)Math.Round(fractionComplete * <span class="code-digit">100</span>);
+                    <span class="code-comment">//</span><span class="code-comment"> send progress report to UI thread
+</span>                    ReportProgress(percentComplete, <span class="code-keyword">new</span> ProgressReport(fractionComplete, 
+                        rgb.ToBitmap(img)));
+                    <span class="code-comment">//</span><span class="code-comment"> (nextX, nextY): coordinates of top left corner in img where next 
+</span>                    <span class="code-comment">//</span><span class="code-comment"> block is to be synthesized;
+</span>                    <span class="code-comment">//</span><span class="code-comment"> (nextBlockWidth, nextBlockHeight): dimensions of block to be 
+</span>                    <span class="code-comment">//</span><span class="code-comment"> synthesized
+</span>                    <span class="code-comment">//</span><span class="code-comment"> (nextOverlapX, nextOverlapY): the amount by which block will will 
+</span>                    <span class="code-comment">//</span><span class="code-comment"> overlap neighbors completed: is this iteration complete
+</span>                    Next(X, Y, blockWidth, blockHeight, imgWidth, imgHeight, overlapX, 
+                        overlapY, <span class="code-keyword">out</span> nextX, <span class="code-keyword">out</span> nextY, <span class="code-keyword">out</span> nextBlockWidth,
+                        <span class="code-keyword">out</span> nextBlockHeight, <span class="code-keyword">out</span> nextOverlapX, <span class="code-keyword">out</span> nextOverlapY,
+                        <span class="code-keyword">out</span> completed);                    
+                    X = nextX; Y = nextY;                    
+                }
+                <span class="code-keyword">if</span> (CancellationPending)
+                {
+                    e.Cancel = <span class="code-keyword">true</span>;
+                    <span class="code-keyword">return</span>;
+                }
+                X = <span class="code-digit">0</span>; Y = <span class="code-digit">0</span>;
+                blockWidth = (<span class="code-keyword">int</span>)Math.Round(blockWidth * blockReductionFactor);
+                blockHeight = (<span class="code-keyword">int</span>)Math.Round(blockHeight * blockReductionFactor);
+                probeWidth = srcWidth - blockWidth;
+                probeHeight = srcHeight - blockHeight;
+                probe.Reset(probeWidth, probeHeight);
+                overlapX = (<span class="code-keyword">int</span>)Math.Round(overlapX * blockReductionFactor);
+                overlapY = (<span class="code-keyword">int</span>)Math.Round(overlapY * blockReductionFactor);
+                <span class="code-keyword">if</span> (overlapX &gt;= blockWidth || overlapY &gt;= blockHeight || blockWidth == 
+                    <span class="code-digit">0</span> || blockHeight == <span class="code-digit">0</span>)
+                    <span class="code-keyword">break</span>;
+            }</pre>
+
+<h2>Steps to Perform Texture Transfer</h2>
+
+<ul>
+<li>Step 1: Select source image. Note that only 24 bit RGB images are supported (most jpegs will fall in this category). Indexed images (most gifs fall in this category) are not supported. </li>
+
+<li>Step 2: Select target image. Note that only 24 bit RGB images are supported (most jpegs will fall in this category). Indexed images (most gifs fall in this category) are not supported. </li>
+
+<li>Step 3: (Optional) change settings if you have to. Clicking on the settings button will pop up a window that looks like this: 
+<p><img width="573" height="338" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/settings_window.jpg" complete="true"> </p>
+
+<p>Here is what the various parameters mean: </p>
+
+<ul>
+<li>Number of iterations: the number of iterations to do </li>
+
+<li>Block width: width of the block in the 1st iteration; units:pixels </li>
+
+<li>Block height: height of the block in 1st iteration; units: pixels </li>
+
+<li>Overlap in X: percentage of overlap along X dimension </li>
+
+<li>Overlap in Y: percentage of overlap along Y dimension </li>
+
+<li>Block reduction factor: percentage by which block size is reduced in each iteration. New block size = old block size * Block reduction factor </li>
+
+<li>Fraction of source image to probe: Texture transfer is a time consuming process and can easily take a couple of hours for a large source and/or target. The code is not optimized for performance and is written for ease of use and understanding. By changing this setting it is possible to change the extent by which the source image is probed or searched to find matching texture blocks. When this parameter is set to 100% the entire source image is searched to find the matching block in function <code>GetMatchingBlock</code>. When the parameter is set to 10% only 10% of the source image is probed in a random fashion to search for a matching block. Thus the function <code>GetMatchingBlock</code> runs 10 times faster when this parameter is set to 10% vs. when it is set to 100%. Note that decreasing the amount to probe does not necessarily decrease the visual quality of the result but is guaranteed to speed up the texture transfer. </li>
+
+<li>Display boundary cut: If this box is checked then the boundaries of the individual patches are colored in red </li>
+
+<li>Difference metric: The program allows the user to select between two distance metrics when computing the difference between source and target: 
+<ul>
+<li>Option 1: SSD (sum of squared differences) metric which computes the sum of squared R,G,B differences; see function <code>Diff</code> in <em>rgb.cs</em> </li>
+
+<li>Option 2: Intensity difference squared which computes the square of the intensity difference; see function <code>Diffi</code> in <em>rgb.cs</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>Step 4: if you like the result you can save the resulting image by clicking on the "Save Result As" button. Note that it is also possible to save the intermediate results when the texture transfer is in progress using this button. </li>
+</ul>
+
+<h2>Results</h2>
+
+<p>In the following table I show some results I have obtained using the texture transfer program. These results are generated with amount to probe set to 10% and distance metric set to SSD. Note that the images have been resized to fit on the screen. Therefore if you download these images and run the program it is likely that you may not get the exact same results. 
+</p><table class="ArticleTableNoBorder">
+<tbody>
+<tr>
+<th>Source</th>
+
+<th>Target</th>
+
+<th>Difference=SSD; Amount to probe=10%</th>
+</tr>
+
+<tr>
+<td><img width="43" height="43" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/S14.jpg" complete="true"></td>
+
+<td><img width="256" height="256" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/globe_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="256" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/globe010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="255" height="398" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/fire-big_src.jpg" complete="true"></td>
+
+<td><img width="256" height="113" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/norton-big_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="113" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/norton010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="256" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/stone_texture_src.jpg" complete="true"></td>
+
+<td><img width="255" height="339" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/gudmrng18_tgt.jpg" complete="true"></td>
+
+<td><img width="255" height="339" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/goodmorning010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="256" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/water-big_src.jpg" complete="true"></td>
+
+<td><img width="256" height="229" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pulse_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="229" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pulse010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="255" height="215" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/Lights_src.jpg" complete="true"></td>
+
+<td><img width="256" height="512" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/dancer_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="512" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/dancer010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="171" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/bubbles_src.jpg" complete="true"></td>
+
+<td><img width="256" height="236" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/DBell_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="236" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/dbell010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="171" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/fern_src.jpg" complete="true"></td>
+
+<td><img width="255" height="317" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/Innocence_cute_girl_tgt.jpg" complete="true"></td>
+
+<td><img width="255" height="317" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/girl010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="171" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/feathers_src.jpg" complete="true"></td>
+
+<td><img width="255" height="320" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/children_tgt.jpg" complete="true"></td>
+
+<td><img width="255" height="320" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/children010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="256" height="256" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/blue_src.jpg" complete="true"></td>
+
+<td><img width="255" height="172" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/chinese-dragon-red_tgt.jpg" complete="true"></td>
+
+<td><img width="255" height="172" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/dragon010_out.jpg" complete="true"></td>
+</tr>
+
+<tr>
+<td><img width="255" height="183" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/spider-web_src.jpg" complete="true"></td>
+
+<td><img width="256" height="376" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/spiderman_tgt.jpg" complete="true"></td>
+
+<td><img width="256" height="376" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/spiderman010_out.jpg" complete="true"></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+
+<h2>Wrap Up</h2>
+
+<p>This was a fun project for me as it introduced me to Computer Graphics and some neat features in C# 2.0 such as the <code>BackgroundWorker</code> class, dynamic layout and panels. I hope some of you find it useful in your work. Suggestions for improvement and bug reports are always welcome. </p>
+
+<h2>Updates &amp; Revision history</h2>
+
+<p>3/7/08: I created this project using Visual C# Express Edition 2008 and have noticed if you attempt to open the solution using VS 2005 it gives an error message. If you encounter this just create a new project and add the source code contained in the zip file, compile and run. The only references you should need are System, System.Windows.Forms and System.Drawing.</p>
+
+<p>3/11/08: Related links: Rob Burke's C# texture transfer <a href="http://www.robburke.net/mle/wang/">code</a></p>
+
+<p>7/26/10: I am attaching a zip file that has source code + Visual Studio Project for my texture transfer article. What I have done here is ported the application to use .NET 4.0 TPL (Task Parallel Library). My hope was that the application would run faster as it consumes all the CPUs of the machine. However, the new code's performance is only marginally better and in many cases even worse. Taking advantage of parallelism is no easy task, and full of gotcha's e.g. who knows maybe my new code is suffering from false sharing. But I would still like to upload this source code as a TPL tutorial, and maybe someone can make it faster. </p>
+
+
+
+						</div>
+						<!-- Article Text End -->
+
+						
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+
+						<div class="float-right">
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="300x250" lqm_loadonview="true" lqm_tags=".NET2.0, C#1.0, C#2.0, C#3.0, C#, .NET, Dev, Advanced,rating4.5"><iframe id="lqmad2" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+						</div>
+
+						
+						
+<table cellpadding="0" cellspacing="5" border="0">
+<tbody><tr valign="top">
+<td id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhotoTable" valign="top" style="width:155px;">
+	<b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" href="http://www.codeproject.com/Members/SIDDHARTH-JAIN-fd97207">SIDDHARTH JAIN (fd97207)</a></b><br><br>
+	<center><img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/{7CE80E54-F36F-426D-BDF7-66AB03E25E12}.jpg" style="border-width:0px;"></center>
+
+	<div class="small-text">
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle">Software Developer</span><br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span><br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/US.gif" alt="United States" width="16px" height="11px"> United States</span><br>
+		<br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberType">Member</span><br>
+		<br><a class="small-text" href="http://www.twitter.com/fd97207"> <img style="vertical-align:middle;border:0;" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t_mini-b.png" alt="Follow on Twitter"> Follow on Twitter</a>
+		<br>
+
+		
+	</div>
+</td>
+
+<td>
+	Creator of bookmine.net<br>	
+</td>
+</tr>
+</tbody></table><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						
+						<div id="ctl00_RateArticleRow" class="clearfix voting-bar">
+						<div class="float-left" style="padding-top:8px"><a class="anchorLink" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#_articleTop">Article Top</a></div>
+						<div class="float-right"><a id="_rating" name="_rating">&nbsp;</a></div> 
+						<div class="float-right align-right">
+							<div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_24172">
+
+	<table width="100%" cellpadding="0" cellspacing="0" class="small-text">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" nowrap="nowrap" align="right">
+			<span class="voteRes"></span>
+			<img class="loaderImg" width="16px" alt="loading..." height="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/animated_loading_blue.gif" style="display:none;"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				<td id="ctl00_RateArticle_StartForm" align="right" nowrap="nowrap">
+					<i>&nbsp;&nbsp;Poor</i>
+				</td>
+
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" type="radio" name="ctl00$RateArticle$VoteRBL" value="1" onclick="ChkRtctl00_RateArticle(1, 24172);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_1" type="radio" name="ctl00$RateArticle$VoteRBL" value="2" onclick="ChkRtctl00_RateArticle(2, 24172);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_2" type="radio" name="ctl00$RateArticle$VoteRBL" value="3" onclick="ChkRtctl00_RateArticle(3, 24172);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_3" type="radio" name="ctl00$RateArticle$VoteRBL" value="4" onclick="ChkRtctl00_RateArticle(4, 24172);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_4" type="radio" name="ctl00$RateArticle$VoteRBL" value="5" onclick="ChkRtctl00_RateArticle(5, 24172);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"></span> 
+
+						
+					</span>
+
+				</td>
+
+				<td id="ctl00_RateArticle_EndForm" align="left">
+					<i>Excellent</i>
+				</td>
+
+				<td>	
+					<input type="submit" name="ctl00$RateArticle$SubmitRateBtn" value="Vote" onclick="return PostBack_ctl00_RateArticle_RateItemWrapper();" id="ctl00_RateArticle_SubmitRateBtn" class="button">
+				</td>
+			</tr>
+			</tbody></table>
+			<span id="ctl00_RateArticle_ErrorMessage" class="error"></span>
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		<div id="ctl00_RateArticle_RCD" class="rating-comment align-left float-right">
+			Add a reason or comment to your vote: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" id="clear-rate_ctl00_RateArticle_RCD" title="close">x</a><br>
+			<textarea class="RateComment" rows="5" cols="60" style="width:98%;"></textarea>
+			<span id="ctl00_RateArticle_CommentReq" class="subdue">Votes of 3 or less require a comment</span>
+		</div>
+	</div>
+</div>
+						</div>
+						</div>
+						
+
+					</form>
+
+					
+					<div style="margin:auto;width:728px;height:90px;margin-top:10px">		  
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="bottom" lqm_format="728x90" lqm_loadonview="true" lqm_tags=".NET2.0, C#1.0, C#2.0, C#3.0, C#, .NET, Dev, Advanced,pos_bottom"><iframe id="lqmad3" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+					</div>
+					
+
+					
+					
+					<h2>Comments and Discussions</h2>
+					<a name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return SwitchMessage(event, null)">
+	<table id="ForumTable" class="box forum" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td><table width="100%" border="0" cellpadding="3px" cellspacing="0">
+				<tbody><tr class="forum-header1">
+					<td colspan="2" style="white-space:nowrap;"><div class="container">
+						<div class="button-newmsg float-left" onclick="FireNew(this)">
+							<img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/forum_newmsg.gif" alt="new" width="16px" height="16px" border="0" align="top"> <a href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt" name="Frm_HoverNL" title="Add a Add a Comment or Question" target="_top"><b>Add a Comment or Question</b></a>&nbsp;
+						</div><div class="admin-links float-left" style="width:60px;">
+							&nbsp;<a href="http://www.codeproject.com/KB/FAQs/MessageBoardsFAQ.aspx"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_question.gif" title="FAQ" alt="FAQ" style="border-width:0;width:16px;height:16px;vertical-align:middle;"></a>
+						</div>&nbsp;<div class="float-right">
+							<form action="http://www.codeproject.com/Search.aspx?fid=0" method="get" class="tight">
+								<input type="hidden" name="fid" value="1083423"><b>Search this forum </b><input type="text" class="Frm_Input" name="qf" style="width:200px;">&nbsp;<input type="submit" value="Go" class="button">
+							</form>
+						</div>
+					</div></td></tr><tr class="forum-header2">
+						<td></td><td style="width:100%;"><div style="text-align:right;">
+							<form action="http://www.codeproject.com/script/Forums/SetOptions.aspx?floc=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt&fid=1083423" method="get" style="margin:0;padding:0;">
+								<input type="hidden" name="fid" value="1083423"><input type="hidden" name="currentQS" value="?floc=%2fArticles%2f24172%2fTexture-Transfer-using-Efros-Freeman-s-Image-Quilt&amp;fid=1083423"><input type="hidden" name="floc" value="/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt"><input type="checkbox" name="prof" id="prof" style="vertical-align:middle;"><label for="prof">Profile popups</label>&nbsp;&nbsp;&nbsp;&nbsp;Noise<select size="1" class="Frm_DropDown" name="noise">
+									<option value="1">Very High</option><option value="2">High</option><option selected="" value="3">Medium</option><option value="4">Low</option><option value="5">Very Low</option>
+								</select>&nbsp;&nbsp;Layout<select size="1" class="Frm_DropDown" name="view">
+									<option selected="" value="Quick">Normal</option><option value="Topic">Expand Posts only</option><option value="Expanded">Expand Posts &amp; Replies</option><option value="Thread">Thread View</option><option value="Normal">No Javascript</option><option value="Preview">No JS + Preview</option>
+								</select>&nbsp;&nbsp;Per page<select size="1" class="Frm_DropDown" name="mpp">
+									<option value="10">10</option><option selected="" value="25">25</option><option value="50">50</option>
+								</select>&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" name="SetOpt" class="button">
+							</form>
+						</div></td>
+					</tr>
+				
+			</tbody></table></td></tr><tr>
+				<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+					<tbody><tr class="forum-navbar">
+						<td>&nbsp;</td><td style="text-align:right;width:50%;"> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423">Refresh</a></td><td class="nav-link" style="text-align:right;white-space:nowrap;"><span class="subdue">First</span> <span class="subdue">Prev</span> <span class="subdue">Next</span></td>
+					</tr>
+				</tbody></table></td>
+			</tr><tr>
+				<td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="fixed-layout blank-background">
+					<tbody><tr>
+						<td><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="5px" alt=""></td>
+					</tr><tr class="MsgHd Rt HdUnSel " id="F2902380_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="16px" class="Frm_MsgIndent"><a name="xx2902380xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_question(1).gif" alt="Question"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2902380" parent="0" thread="2902380" href="http://www.codeproject.com/Messages/2902380/question-is-iteration-used-for-refining-the-textur.aspx">question: is iteration used for refining the texture transfer result?</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5894882">HCYU</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">17:23 29 Jan '09 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2902380_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:16px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">In your iterative loop, you use alpha to balance the differences of src-img and src-targ. In the meanwhile, you also reduce the size of block. But I don't see that the last generated img is regarded as the initial value for next iteration. Why?<br>
+I wonder if your iteration is only for illustrating some synthesis effects with different sizes and alphas rather than refining anything?<br>
+&nbsp;<br>
+HCYU<br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902380&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902380&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2902380" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2902380/question-is-iteration-used-for-refining-the-textur.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2902380&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2902380&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2902380" style="white-space:nowrap;"><span class="voteform" ownerid="5894882" msgid="2902380" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902380xx" onclick="RateMsg(5894882, 2902380,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902380xx"="" title="vote this message a 1" onclick="RateMsg(5894882,2902380,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902380xx"="" title="vote this message a 2" onclick="RateMsg(5894882,2902380,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902380xx"="" title="vote this message a 3" onclick="RateMsg(5894882,2902380,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902380xx"="" title="vote this message a 4" onclick="RateMsg(5894882,2902380,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902380xx"="" title="vote this message a 5" onclick="RateMsg(5894882,2902380,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902380xx" onclick="RateMsg(5894882,2902380,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902380xx" title="Report as Abuse" onclick="return ReportMsg(5894882,2902380,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902380xx" title="Report as Spam" onclick="return ReportMsg(5894882,2902380,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd LoVote HdUnSel " id="F2902391_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="34px" class="Frm_MsgIndent"><a name="xx2902391xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2902391" parent="2902380" thread="2902380" href="http://www.codeproject.com/Messages/2902391/Re-question-is-iteration-used-for-refining-the-tex.aspx">Re: question: is iteration used for refining the texture transfer result?</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=860577">SIDDHARTH JAIN (fd97207)</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">17:32 29 Jan '09 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2902391_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:34px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="34px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I think you should go over the code and the paper by Efros more carefully. let<br>
+source: source image input to algorithm<br>
+texture: texture image input to algorithm<br>
+target: image to be synthesized<br>
+The last generated img influences the img in next iteration. In each iteration the result is a combination of source, texture and current value of target. see <a href="http://www.awargi.org/cs184/third.htm"><br>
+</a>[<a href="http://www.awargi.org/cs184/third.htm" target="_blank" title="New Window">^</a>]:<br>
+We modify the error term of the image quilting algorithm to be the weighted sum, alpha times the block overlap matching error plus (1-alpha) times the squared error between correspondence map pixels within the source texture block and those at the <b>current target image position</b><br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902391&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902391&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2902380" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2902391/Re-question-is-iteration-used-for-refining-the-tex.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2902391&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2902391&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2902391" style="white-space:nowrap;">1.00/5 (1 vote) <span class="voteform" ownerid="860577" msgid="2902391" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902391xx" onclick="RateMsg(860577, 2902391,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902391xx"="" title="vote this message a 1" onclick="RateMsg(860577,2902391,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902391xx"="" title="vote this message a 2" onclick="RateMsg(860577,2902391,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902391xx"="" title="vote this message a 3" onclick="RateMsg(860577,2902391,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902391xx"="" title="vote this message a 4" onclick="RateMsg(860577,2902391,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902391xx"="" title="vote this message a 5" onclick="RateMsg(860577,2902391,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902391xx" onclick="RateMsg(860577,2902391,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902391xx" title="Report as Abuse" onclick="return ReportMsg(860577,2902391,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902391xx" title="Report as Spam" onclick="return ReportMsg(860577,2902391,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F2902521_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="52px" class="Frm_MsgIndent"><a name="xx2902521xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2902521" parent="2902391" thread="2902380" href="http://www.codeproject.com/Messages/2902521/Re-question-is-iteration-used-for-refining-the-tex.aspx">Re: question: is iteration used for refining the texture transfer result?</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5894882">HCYU</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">19:10 29 Jan '09 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2902521_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:52px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="52px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I question your iteration scheme.<br>
+"It starts out using large blocks to roughly assign where everything will go"<br>
+&nbsp;<br>
+At beginning, you use large block and generate a target. I wonder if the resulting target will be used in the next iteration?<br>
+&nbsp;<br>
+"and then uses smaller blocks to make sure the different textures fit well together."<br>
+&nbsp;<br>
+Indeed, if using the smaller blocks at beginning, it should generate the same effect as your iterative one....<br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902521&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2902521&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2902380" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2902521/Re-question-is-iteration-used-for-refining-the-tex.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2902521&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2902521&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2902521" style="white-space:nowrap;"><span class="voteform" ownerid="5894882" msgid="2902521" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902521xx" onclick="RateMsg(5894882, 2902521,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902521xx"="" title="vote this message a 1" onclick="RateMsg(5894882,2902521,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902521xx"="" title="vote this message a 2" onclick="RateMsg(5894882,2902521,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902521xx"="" title="vote this message a 3" onclick="RateMsg(5894882,2902521,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902521xx"="" title="vote this message a 4" onclick="RateMsg(5894882,2902521,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2902521xx"="" title="vote this message a 5" onclick="RateMsg(5894882,2902521,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902521xx" onclick="RateMsg(5894882,2902521,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902521xx" title="Report as Abuse" onclick="return ReportMsg(5894882,2902521,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2902521xx" title="Report as Spam" onclick="return ReportMsg(5894882,2902521,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F4227747_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="70px" class="Frm_MsgIndent"><a name="xx4227747xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="4227747" parent="2902521" thread="2902380" href="http://www.codeproject.com/Messages/4227747/Re-question-is-iteration-used-for-refining-the-tex.aspx">Re: question: is iteration used for refining the texture transfer result?</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=8262530">Member 8262530</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">22:54 20 Apr '12 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4227747_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:70px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="70px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">To calculate error d2, you always use the target image but I don't see it getting updated after a iteration. Only the image (img) gets updated... Isn't it weird that you always use the target image again every iteration? Because that would make it unnecessary to do iterations...<br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=4227747&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=4227747&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2902380" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/4227747/Re-question-is-iteration-used-for-refining-the-tex.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=4227747&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=4227747&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF4227747" style="white-space:nowrap;"><span class="voteform" ownerid="8262530" msgid="4227747" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx4227747xx" onclick="RateMsg(8262530, 4227747,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 4227747xx"="" title="vote this message a 1" onclick="RateMsg(8262530,4227747,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 4227747xx"="" title="vote this message a 2" onclick="RateMsg(8262530,4227747,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 4227747xx"="" title="vote this message a 3" onclick="RateMsg(8262530,4227747,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 4227747xx"="" title="vote this message a 4" onclick="RateMsg(8262530,4227747,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 4227747xx"="" title="vote this message a 5" onclick="RateMsg(8262530,4227747,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx4227747xx" onclick="RateMsg(8262530,4227747,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx4227747xx" title="Report as Abuse" onclick="return ReportMsg(8262530,4227747,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx4227747xx" title="Report as Spam" onclick="return ReportMsg(8262530,4227747,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="root msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd Rt HdUnSel " id="F2694093_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="16px" class="Frm_MsgIndent"><a name="xx2694093xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2694093" parent="0" thread="2694093" href="http://www.codeproject.com/Messages/2694093/Cool-pictures.aspx">Cool pictures</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=3673646">Roberto Collina</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">10:58 26 Aug '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2694093_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:16px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I find this very entertaining, thanks for sharing. Got my 5.<br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2694093&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2694093&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2694093" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2694093/Cool-pictures.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2694093&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2694093&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2694093" style="white-space:nowrap;"><span class="voteform" ownerid="3673646" msgid="2694093" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2694093xx" onclick="RateMsg(3673646, 2694093,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2694093xx"="" title="vote this message a 1" onclick="RateMsg(3673646,2694093,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2694093xx"="" title="vote this message a 2" onclick="RateMsg(3673646,2694093,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2694093xx"="" title="vote this message a 3" onclick="RateMsg(3673646,2694093,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2694093xx"="" title="vote this message a 4" onclick="RateMsg(3673646,2694093,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2694093xx"="" title="vote this message a 5" onclick="RateMsg(3673646,2694093,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2694093xx" onclick="RateMsg(3673646,2694093,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2694093xx" title="Report as Abuse" onclick="return ReportMsg(3673646,2694093,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2694093xx" title="Report as Spam" onclick="return ReportMsg(3673646,2694093,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="root msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd Rt HdUnSel " id="F2457542_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="16px" class="Frm_MsgIndent"><a name="xx2457542xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2457542" parent="0" thread="2457542" href="http://www.codeproject.com/Messages/2457542/Very-Slow.aspx">Very Slow</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=4587157">Aamir Mustafa</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">12:20 8 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2457542_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:16px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">hello<br>
+this is good article but it is slow. it works very slow<br>
+Can its performance be improved. Can we convert it into vb.net <br>
+&nbsp;<br>
+<div class="ForumSig">Aamir Mustafa</div><br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2457542&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2457542&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2457542" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2457542/Very-Slow.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2457542&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2457542&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2457542" style="white-space:nowrap;"><span class="voteform" ownerid="4587157" msgid="2457542" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457542xx" onclick="RateMsg(4587157, 2457542,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457542xx"="" title="vote this message a 1" onclick="RateMsg(4587157,2457542,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457542xx"="" title="vote this message a 2" onclick="RateMsg(4587157,2457542,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457542xx"="" title="vote this message a 3" onclick="RateMsg(4587157,2457542,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457542xx"="" title="vote this message a 4" onclick="RateMsg(4587157,2457542,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457542xx"="" title="vote this message a 5" onclick="RateMsg(4587157,2457542,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457542xx" onclick="RateMsg(4587157,2457542,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457542xx" title="Report as Abuse" onclick="return ReportMsg(4587157,2457542,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457542xx" title="Report as Spam" onclick="return ReportMsg(4587157,2457542,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F2457660_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="34px" class="Frm_MsgIndent"><a name="xx2457660xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2457660" parent="2457542" thread="2457542" href="http://www.codeproject.com/Messages/2457660/Re-Very-Slow.aspx">Re: Very Slow</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=860577">SIDDHARTH JAIN (fd97207)</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">15:46 8 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2457660_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:34px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="34px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I mentioned in the article that texture transfer can be time consuming. But I think all the examples I show took less than an hour on my Gateway laptop with 2GB RAM and AMD Turion 64 X2 Dual Core processor. To speed up:<br>
++ set amount to probe=10% (refer to the article)<br>
++ You could try commenting out ReportProgress; if you do this the result will no longer be updated as the texture transfer is in progress - that could speed things just a litte bit but I am not sure if you will like it<br>
++ it should be possible to convert to vb.net but I can't spoonfeed you <br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2457660&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2457660&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2457542" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2457660/Re-Very-Slow.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2457660&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2457660&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2457660" style="white-space:nowrap;"><span class="voteform" ownerid="860577" msgid="2457660" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457660xx" onclick="RateMsg(860577, 2457660,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457660xx"="" title="vote this message a 1" onclick="RateMsg(860577,2457660,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457660xx"="" title="vote this message a 2" onclick="RateMsg(860577,2457660,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457660xx"="" title="vote this message a 3" onclick="RateMsg(860577,2457660,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457660xx"="" title="vote this message a 4" onclick="RateMsg(860577,2457660,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2457660xx"="" title="vote this message a 5" onclick="RateMsg(860577,2457660,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457660xx" onclick="RateMsg(860577,2457660,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457660xx" title="Report as Abuse" onclick="return ReportMsg(860577,2457660,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2457660xx" title="Report as Spam" onclick="return ReportMsg(860577,2457660,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F2469446_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="52px" class="Frm_MsgIndent"><a name="xx2469446xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2469446" parent="2457660" thread="2457542" href="http://www.codeproject.com/Messages/2469446/Re-Very-Slow.aspx">Re: Very Slow</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=88591">Wong Shao Voon</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">10:55 17 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2469446_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:52px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="52px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Is there any plan to update the code to use multithreading to speed up the processing on a multi-core CPUs? Is it possible?<br>
+&nbsp;<br>
+This is really cool article and code! Got my 5! <br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2469446&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2469446&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2457542" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2469446/Re-Very-Slow.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2469446&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2469446&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2469446" style="white-space:nowrap;"><span class="voteform" ownerid="88591" msgid="2469446" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2469446xx" onclick="RateMsg(88591, 2469446,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2469446xx"="" title="vote this message a 1" onclick="RateMsg(88591,2469446,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2469446xx"="" title="vote this message a 2" onclick="RateMsg(88591,2469446,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2469446xx"="" title="vote this message a 3" onclick="RateMsg(88591,2469446,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2469446xx"="" title="vote this message a 4" onclick="RateMsg(88591,2469446,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2469446xx"="" title="vote this message a 5" onclick="RateMsg(88591,2469446,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2469446xx" onclick="RateMsg(88591,2469446,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2469446xx" title="Report as Abuse" onclick="return ReportMsg(88591,2469446,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2469446xx" title="Report as Spam" onclick="return ReportMsg(88591,2469446,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F2470157_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="70px" class="Frm_MsgIndent"><a name="xx2470157xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2470157" parent="2469446" thread="2457542" href="http://www.codeproject.com/Messages/2470157/Re-Very-Slow.aspx">Re: Very Slow</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=860577">SIDDHARTH JAIN (fd97207)</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">17:37 17 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2470157_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:70px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="70px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I am already using multithreading to run the texture transfer in a separate BackgroundWorker thread; I will investigate how to possibly speed it even more. Thanks for your vote - appreciate it. <br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2470157&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2470157&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2457542" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2470157/Re-Very-Slow.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2470157&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2470157&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2470157" style="white-space:nowrap;"><span class="voteform" ownerid="860577" msgid="2470157" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2470157xx" onclick="RateMsg(860577, 2470157,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2470157xx"="" title="vote this message a 1" onclick="RateMsg(860577,2470157,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2470157xx"="" title="vote this message a 2" onclick="RateMsg(860577,2470157,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2470157xx"="" title="vote this message a 3" onclick="RateMsg(860577,2470157,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2470157xx"="" title="vote this message a 4" onclick="RateMsg(860577,2470157,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2470157xx"="" title="vote this message a 5" onclick="RateMsg(860577,2470157,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2470157xx" onclick="RateMsg(860577,2470157,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2470157xx" title="Report as Abuse" onclick="return ReportMsg(860577,2470157,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2470157xx" title="Report as Spam" onclick="return ReportMsg(860577,2470157,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="root msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd Rt HdUnSel " id="F2455995_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="16px" class="Frm_MsgIndent"><a name="xx2455995xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2455995" parent="0" thread="2455995" href="http://www.codeproject.com/Messages/2455995/Tidy-the-article-formatting.aspx">Tidy the article formatting</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=164">norm <b><font color="#000080">.net</font></b></a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">8:08 7 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2455995_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:16px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">and you got yourself a good article! <br>
+&nbsp;<br>
+<div class="ForumSig"><font face="Arial" size="3" color="#330099"><b>Brainware Error</b> - reboot required.</font></div><br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455995&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455995&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2455995" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2455995/Tidy-the-article-formatting.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2455995&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2455995&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2455995" style="white-space:nowrap;"><span class="voteform" ownerid="164" msgid="2455995" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455995xx" onclick="RateMsg(164, 2455995,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455995xx"="" title="vote this message a 1" onclick="RateMsg(164,2455995,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455995xx"="" title="vote this message a 2" onclick="RateMsg(164,2455995,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455995xx"="" title="vote this message a 3" onclick="RateMsg(164,2455995,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455995xx"="" title="vote this message a 4" onclick="RateMsg(164,2455995,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455995xx"="" title="vote this message a 5" onclick="RateMsg(164,2455995,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455995xx" onclick="RateMsg(164,2455995,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455995xx" title="Report as Abuse" onclick="return ReportMsg(164,2455995,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455995xx" title="Report as Spam" onclick="return ReportMsg(164,2455995,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HdUnSel " id="F2456865_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="34px" class="Frm_MsgIndent"><a name="xx2456865xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2456865" parent="2455995" thread="2455995" href="http://www.codeproject.com/Messages/2456865/Re-Tidy-the-article-formatting.aspx">Re: Tidy the article formatting</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=860577">SIDDHARTH JAIN (fd97207)</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">18:44 7 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2456865_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:34px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="34px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Article has been properly formatted. Looks fine on my computer. <br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2456865&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2456865&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2455995" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2456865/Re-Tidy-the-article-formatting.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2456865&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2456865&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2456865" style="white-space:nowrap;"><span class="voteform" ownerid="860577" msgid="2456865" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2456865xx" onclick="RateMsg(860577, 2456865,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2456865xx"="" title="vote this message a 1" onclick="RateMsg(860577,2456865,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2456865xx"="" title="vote this message a 2" onclick="RateMsg(860577,2456865,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2456865xx"="" title="vote this message a 3" onclick="RateMsg(860577,2456865,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2456865xx"="" title="vote this message a 4" onclick="RateMsg(860577,2456865,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2456865xx"="" title="vote this message a 5" onclick="RateMsg(860577,2456865,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2456865xx" onclick="RateMsg(860577,2456865,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2456865xx" title="Report as Abuse" onclick="return ReportMsg(860577,2456865,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2456865xx" title="Report as Spam" onclick="return ReportMsg(860577,2456865,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="root msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd Rt HdUnSel " id="F2455910_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="16px" class="Frm_MsgIndent"><a name="xx2455910xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2455910" parent="0" thread="2455910" href="http://www.codeproject.com/Messages/2455910/Source-Code-Not-Available.aspx">Source Code Not Available</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=4587157">Aamir Mustafa</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">6:51 7 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2455910_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:16px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">hello<br>
+You have not included source code above!<br>
+plz upload it so that I can upload it <br>
+&nbsp;<br>
+<div class="ForumSig">Aamir Mustafa</div><br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455910&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455910&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2455910" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2455910/Source-Code-Not-Available.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2455910&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2455910&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2455910" style="white-space:nowrap;"><span class="voteform" ownerid="4587157" msgid="2455910" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455910xx" onclick="RateMsg(4587157, 2455910,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455910xx"="" title="vote this message a 1" onclick="RateMsg(4587157,2455910,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455910xx"="" title="vote this message a 2" onclick="RateMsg(4587157,2455910,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455910xx"="" title="vote this message a 3" onclick="RateMsg(4587157,2455910,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455910xx"="" title="vote this message a 4" onclick="RateMsg(4587157,2455910,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455910xx"="" title="vote this message a 5" onclick="RateMsg(4587157,2455910,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455910xx" onclick="RateMsg(4587157,2455910,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455910xx" title="Report as Abuse" onclick="return ReportMsg(4587157,2455910,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455910xx" title="Report as Spam" onclick="return ReportMsg(4587157,2455910,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr class="quick">
+						<td class="msg-divide"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="1px" alt=""></td>
+					</tr><tr class="MsgHd HiVote HdUnSel " id="F2455958_h0">
+						<td width="100%"><table class="quickHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr class="hover-row">
+								<td width="34px" class="Frm_MsgIndent"><a name="xx2455958xx"></a><img height="16px" width="16px" align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container"><a class="message-link" name="2455958" parent="2455910" thread="2455910" href="http://www.codeproject.com/Messages/2455958/Re-Source-Code-Not-Available.aspx">Re: Source Code Not Available</a> <a onclick="return Pin(this);" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#" title="Click to pin message"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/pin.gif" border="0" align="top" alt="Pin" width="13px" height="12px"></a><img alt="new" style="vertical-align:middle;height:12px;width:31px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/new12.png"></td><td class="Frm_MsgIcon"><img border="0" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=38829">
+  <code>leppie</code>
+</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">7:35 7 Mar '08 &nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F2455958_h1" style="display:none;">
+						<td width="100%"><table class="quickBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="Frm_MsgIndent" style="width:34px;"><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" height="1px" width="34px" alt=""></td><td class="MsgBd BdSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Works for me. Did you just miss the link?<br>
+&nbsp;<br>
+To author: Fix the formatting please, or email CodeProject to help you fix it, it does look like an interesting article. <img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/smiley_smile.gif" align="top" alt="Smile | :)">  <br>
+&nbsp;<br>
+<div class="ForumSig"><a href="http://xacc.wordpress.com/" target="_blank">xacc.ide</a> - now with IronScheme support<br><a href="http://www.codeplex.com/IronScheme" target="_blank">IronScheme</a> - 1.0 alpha 2 out now<br>
+</div><br></td>
+											</tr><tr style="vertical-align:middle;">
+												<td class="msg-footer"><a class="button-newmsg" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455958&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=1083423&select=2455958&floc=/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&tid=2455910" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2455958/Re-Source-Code-Not-Available.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2455958&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post" onclick="return bookmarkMe(0,0,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=2455958&amp;obtid=3&amp;action=AddBookmark&amp;bio=false&#39;,false, this, this);">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2455958" style="white-space:nowrap;">5.00/5 (2 votes) <span class="voteform" ownerid="38829" msgid="2455958" goodbad="false" gpre="" bpre="" msgtype="" done="true">Rate this message: <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455958xx" onclick="RateMsg(38829, 2455958,1,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455958xx"="" title="vote this message a 1" onclick="RateMsg(38829,2455958,1,0);"><b>1</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455958xx"="" title="vote this message a 2" onclick="RateMsg(38829,2455958,2,0);"><b>2</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455958xx"="" title="vote this message a 3" onclick="RateMsg(38829,2455958,3,0);"><b>3</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455958xx"="" title="vote this message a 4" onclick="RateMsg(38829,2455958,4,0);"><b>4</b></a> <a class="toolbar nav-link" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx" 2455958xx"="" title="vote this message a 5" onclick="RateMsg(38829,2455958,5,0);"><b>5</b></a> <a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455958xx" onclick="RateMsg(38829,2455958,5,0);"><img height="14px" width="14px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> <br><div class="tooltip float-right" style="padding-right:55px"><img height="16px" width="16px" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/report.gif" border="0" alt="report" class="align-bottom"> Report<div class="speech-bubble-container-up"><div class="speech-bubble-up" style="width:60px !important;line-height:17px"><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455958xx" title="Report as Abuse" onclick="return ReportMsg(38829,2455958,-2);">Abusive</a><br><a href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt#xx2455958xx" title="Report as Spam" onclick="return ReportMsg(38829,2455958,-1);">Spam</a></div><div class="speech-bubble-pointer-up"><div class="speech-bubble-pointer-up-inner"></div></div></div></div></span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr>
+						<td><img src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/t(2).gif" border="0" width="1px" height="5px" alt=""></td>
+					</tr>
+				</tbody></table></td>
+			</tr><tr>
+				<td><table width="100%" cellpadding="2px" cellspacing="0">
+					<tbody><tr class="forum-footer">
+						<td>Last Visit: 5:00 1 Jan '00  &nbsp; &nbsp; Last Update: 8:49 6 Jul '12 </td><td class="nav-link" style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" type="hidden" value="/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?fid=1083423&amp;fr=14"><b>1</b></td>
+					</tr>
+				</tbody></table></td>
+			</tr>
+		
+	</tbody></table>
+</div><p class="small-text"><img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_general.gif" width="16px" height="16px" alt="General"> General &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_news.gif" width="16px" height="16px" alt="News"> News &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_idea.gif" width="16px" height="16px" alt="Suggestion"> Suggestion &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_question(1).gif" width="16px" height="16px" alt="Question"> Question &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_bug.gif" width="16px" height="16px" alt="Bug"> Bug &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_answer.gif" width="16px" height="16px" alt="Answer"> Answer &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_joke.gif" width="16px" height="16px" alt="Joke"> Joke &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_rant.gif" width="16px" height="16px" alt="Rant"> Rant &nbsp;&nbsp; <img align="top" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/msg_admin.gif" width="16px" height="16px" alt="Admin"> Admin &nbsp;&nbsp; </p><p class="small-text">Use Ctrl+Left/Right to switch messages, Ctrl+Up/Down to switch threads, Ctrl+Shift+Left/Right to switch pages.</p>
+
+					
+					<div class="theme1-background" style="height:2px"></div>
+
+					<div class="extended tiny-text">
+						<div class="row">
+							<div class="float-left">
+								<a id="ctl00_PermaLink" href="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject.htm">Permalink</a> | 
+								<a id="ctl00_AdvertiseLink" href="http://lakequincy.com/">Advertise </a> |
+								<a id="ctl00_PrivacyLink" href="http://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+								<a id="ctl00_Mobile" rel="nofollow" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?display=Mobile">Mobile</a>
+								<br>
+								
+								Web02 |
+								2.5.120703.1 |
+								Last Updated 11 Mar 2008								
+							</div>
+							<div class="float-right align-right">
+								Article Copyright 2008 by SIDDHARTH JAIN (fd97207)<br>Everything else
+								Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2012 <br>
+								<a id="ctl00_TermsOfUseLink" href="http://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a>
+							</div>
+
+							
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="http://www.codeproject.com/Articles/24172/Texture-Transfer-using-Efros-Freeman-s-Image-Quilt?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+						</div>
+					</div>
+					
+
+				<br clear="all">
+		
+				
+				</div>
+
+				<div id="ctl00_ContentSide" class="text-sidebar">
+					
+
+					
+
+					
+
+					
+<div class="announce">
+
+<div class="announce-content">
+
+<div>Hot News: <a id="ctl00_News_News_ctl01_Link" href="http://www.netmagazine.com/features/10-things-you-didnt-know-javascript-could-do">10 things you didn't know JavaScript could do</a></div>
+
+The Code Project Insider. <a id="ctl00_News_News_ctl02_Subscribe" href="http://www.codeproject.com/Feature/Insider/">Free each morning.</a>
+</div>
+</div>
+
+						
+					<div style="width:160px;margin: 10px 0;">
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="160x600" lqm_tags=".NET2.0, C#1.0, C#2.0, C#3.0, C#, .NET, Dev, Advanced,rating4.5"><iframe id="lqmad4" width="160" height="600" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+					</div>
+
+					
+	<div class="announce">
+	<div id="ctl00_RelatedArticles_RelatedResults_ctl00_header" class="announce-header">Related Articles</div>
+	<div class="announce-content">	
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl02_Link" class="title" href="http://www.codeproject.com/KB/recipes/ImgAlign.aspx">Image Alignment Algorithms</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl03_Link" class="title" href="http://www.codeproject.com/Tips/87638/Load-textures-using-OpenGL-and-Light-weight-Corona.aspx">Load textures using OpenGL and Light weight Corona Image I/O</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl04_Link" class="title" href="http://www.codeproject.com/KB/GPU-Programming/opencv-cuda-filters.aspx">Image Filters Using CPU and GPU</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl05_Link" class="title" href="http://www.codeproject.com/KB/directx/DirectXTexture_ThreadLoad.aspx">Loading time consuming textures/images in a background thread in a DirectX application</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl06_Link" class="title" href="http://www.codeproject.com/KB/database/TransferUsingSQLBulkCopy.aspx">Transferring Data Using SqlBulkCopy</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl07_Link" class="title" href="http://www.codeproject.com/KB/dotnet/transfer_D90_images_WIA.aspx">Transferring D90 images with WIA</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl08_Link" class="title" href="http://www.codeproject.com/KB/directx/3DAlphaTransparency.aspx">Rendering Textures with Alpha Channels and Color Key Transparency using a MatrixStack in Managed Direct3D</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl09_Link" class="title" href="http://www.codeproject.com/KB/GDI-plus/bitmapTxtr.aspx">Applying a texture to a bitmap</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl10_Link" class="title" href="http://www.codeproject.com/KB/recipes/ImgAlign2.aspx">Image Alignment Algorithms - Part II</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl11_Link" class="title" href="http://www.codeproject.com/KB/game/OAG_Part2_3.aspx">OAG Library (OpenGL) Part 2.3 - Drawing 2D Textures Using the Mouse and Programatically</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl12_Link" class="title" href="http://www.codeproject.com/KB/openGL/anyTex.aspx">anyTex - a class for non-restrictive textures in OpenGL</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl13_Link" class="title" href="http://www.codeproject.com/KB/directx/XNA_Ground_Combine_Textur.aspx">XNA Alpha Textures</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl14_Link" class="title" href="http://www.codeproject.com/KB/webservices/wcftransfer.aspx">File Transfer using WCF and Socket</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl15_Link" class="title" href="http://www.codeproject.com/KB/GDI-plus/Image_Processing_Lab.aspx">Image Processing Lab in C#</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl16_Link" class="title" href="http://www.codeproject.com/KB/recipes/GaClassSchedule.aspx">Making a Class Schedule Using a Genetic Algorithm</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl17_Link" class="title" href="http://www.codeproject.com/KB/clipboard/archerclipboard1.aspx">Using the Clipboard, Part I : Transferring Simple Text</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl18_Link" class="title" href="http://www.codeproject.com/KB/recipes/Fast_EdgeDetection.aspx">Method for Edge Detection in Color Images, Using 1-Dimensional Liner Image</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl19_Link" class="title" href="http://www.codeproject.com/KB/IP/NDKFileTransfer.aspx">Simple File Transfer Using the Network Development Kit 2.0</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl20_Link" class="title" href="http://www.codeproject.com/KB/graphics/Ray_Tracing_and_mapping.aspx">Simple Ray Tracing with Texture Mapping in C#</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl21_Link" class="title" href="http://www.codeproject.com/KB/aspnet/Image_to_Xml_File.aspx">Image to XML file for file transfer using ASP.NET and C#</a>
+		
+	</div>
+	
+	</div>
+	</div>
+	
+
+
+					
+
+				</div>
+
+			</div>
+			
+
+		</div>
+		
+
+	</div>
+</div>
+
+
+<div style="display:none;" id="lqm_AdTable">
+	
+</div>
+
+<script type="text/javascript" language="Javascript" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/jquery.min.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/script/JS/jquery-1.6.2.min.js' type='text/javascript' %3E%3C/script%3E"));
+}//]]></script>
+<script type="text/javascript" language="Javascript" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/article.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/navbar.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Texture Transfer using Efros & Freeman's Image Quilting Algorithm - CodeProject_files/m.min.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+var socialLinks = new social();
+socialLinks.PlaceholderId="ATD";socialLinks.ObjectId=24172;
+socialLinks.ObjectTypeId=2;
+socialLinks.addtoMethod=1;
+socialLinks.Horizontal=false;
+socialLinks.Showname=true;
+socialLinks.setupLinks("socialLinks", escape(document.location.href),escape(document.title), 100, 0, "small-text Bold", "AddTo");
+socialLinks.setupMenu();
+if($.LqmAds)$.LqmAds();
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search site');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide();
+  sbar.blur(function() { if (!oSrchFlt)sfilter.hide();srchBoxFoc=false; });
+  sbar.focus(function() { oSrchFlt=false;srchBoxFoc=true;sfilter.show(); });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox)sfilter.hide();});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$(document).ready(function() { anchorAnimate(); });
+$("#ctl00_RateArticle_RateItemWrapper").removeClass("container-rating");$('#clear-rate_ctl00_RateArticle_RCD').click(function () { $('#ctl00_RateArticle_RCD').hide(); return false;});
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(24172,2,1,true,true,3);
+}
+function ChkRtctl00_RateArticle(val, objId) {if (val<=3||true) {
+$('div[name=RateItem_' + objId + '] .rating-comment').css("display","");}
+else $('div[name=RateItem_' + objId + '] .rating-comment').css("display","none");}
+
+
+//]]>
+</script>
+
+
+
+<canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>

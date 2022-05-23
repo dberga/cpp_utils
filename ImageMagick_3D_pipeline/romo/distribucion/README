@@ -1,0 +1,21 @@
+
+
+Se generan 3 ejecutables: 
+
+para ejecutarlos:
+	./Render objeto.txt   
+		genera un archivo test.bmp con la imagen 
+		los parametros hay que ediarlos desde el main (Render.cpp)
+	
+	./cli objeto.txt	  
+		el programa nos preguntara el color de la luz ambiental y la incidente
+		y deberemos dar valores de coma flotante entre 0 y 1 .
+		dar valores al punto c
+		
+	./demo
+		dar valores al punto c
+							
+
+
+
+

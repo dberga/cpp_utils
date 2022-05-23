@@ -1,0 +1,18 @@
+total: 7 blocks
+block 1 on top of block 5
+block 2 on top of block 6
+block 3 on table
+block 4 on table
+block 5 on top of block 2
+block 6 on top of block 4
+block 7 on top of block 1
+no more blocks
+total: 7 blocks
+block 1 on top of block 7
+block 2 on table
+block 3 on top of block 5
+block 4 on top of block 3
+block 5 on top of block 2
+block 6 on table
+block 7 on table
+no more blocks

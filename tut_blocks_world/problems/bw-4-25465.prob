@@ -1,0 +1,12 @@
+total: 4 blocks
+block 1 on top of block 4
+block 2 on top of block 3
+block 3 on table
+block 4 on table
+no more blocks
+total: 4 blocks
+block 1 on table
+block 2 on top of block 1
+block 3 on table
+block 4 on top of block 2
+no more blocks

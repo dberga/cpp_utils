@@ -1,0 +1,65 @@
+David Berga 146716
+David Madrid 146722
+
+-------------------FUNCIONAMIENTO DEL CODIGO DE "search.cxx" y "search.hxx"-------------------
+
+Bien, tenemos dos clases distinguidas y un struct
+
+*********Node*********
+-> En la clase Node, tenemos definida una clase lo mas semejante al nodo de un grafo
+-> En este caso tenemos atributos 
+(a1)State* s -> donde tenemos el apuntador a State
+(a2)unsigned G -> donde tenemos el valor de coste acumulado (siempre sera +1 segun el nivel ya que hemos asumido costes=1)
+(a3)unsigned H -> donde tenemos el valor de la heuristica
+-> De metodos solo usamos constructors y setters
+
+*********Search*********
+-> En la clase Search, tenemos definidos unos atributos que usaremos como si fueran globales y unas funciones para el algoritmo
+-> Los atributos son 
+(a1)std::vector<Action*> actions  -> donde guardamos las acciones que obteniamos de world
+(a2)State* m_initial_state  -> donde guardamos el State inicial de world
+(a3)State* m_final_state -> donde guardamos el State final de world
+(a4)priority_queue<Node*,vector<Node*>, CompareNode > p_queue -> es la cola de prioridad que usamos
+(a5)std::vector<State*> closedstates -> donde guardamos los nodos que ya hemos usado/cerrado
+-> Los metodos son
+(m1)unsigned calcH(State &s1,State &s2) -> aqui calculamos la diferencia de bloques diferentes entre dos estados, esto designara la H
+(m2)void getvalues(Blocks_World ourworld) -> aqui pasamos los valores de world a nuestros atributos de search
+(m3)unsigned recorrer(Node *enew) -> este es el algoritmo recursivo
+(m4)void solve(Blocks_World ourworld) -> empieza el algoritmo imprimiendo en "solutions.dat" el valor del camino elegido optimo
+
+*********CompareNode*********
+-> Esto simplemente es un std::binary_function que es auxiliar para designar que atributos se usan para considerar en la prioridad de nuestra cola de prioridad, en el caso es G+H
+
+
+-------------------FUNCIONAMIENTO DEL ALGORITMO (funcion "recorrer")-------------------
+-> En el codigo esta comentado para que se entienda bien
+
+Simplemente se trata de un algoritmo recursivo. 
+1. Primero lo que hace es coger el primer nodo de la cola de prioridad
+2. Mira si el nodo esta cerrado. En caso negativo, hace lo siguiente: 2.1, 2.2 y 2.3
+	2.1. Crea nuevos nodos que provienen de las acciones aplicables aplicadas a nuestro nodo que teniamos
+	2.2. Guarda estos nodos en la cola de prioridad segun la prioridad de G+H (programado ya en CompareNode)
+	2.3. Guarda el estado del nodo actual como closed
+3. Comprovamos si el estado del nodo actual == estado final. En caso positivo hace lo siguiente: 3.1 y 3.2
+	3.1. Mira si es admisible o no, y imprime si lo es o no.
+	3.2. Retorna el valor del G acumulado (siempre sera G del nodo actual ya que habiamos considerado costes=1)
+3. En caso negativo hace lo siguiente: 3.3 y 3.4
+	3.3. Pop de la cola de prioridad (quita el primer nodo)
+	3.4. Vuelve a recorrer
+
+
+-------------------PROBLEMAS/DUDAS-------------------
+
+Nuestro programa da 2 problemas:
+
+->PRIMERO
+Nuestra p_queue, al coger su valor al hacer "p_queue.top()->s" funciona dentro de "getvalues", pero no dentro de "recorrer"
+No sabemos muy bien por que pasa eso, pero quizas se deba a que no se trate de un atributo convencional que pueda ser modificable facilmente como si fuera un global, por eso creemos que no funciona dentro de recorrer.
+Eso implica que el programa para a partir de su uso (al principio del algoritmo "recorrer") y eso es un problema
+	*Ver que si descomentamos la linia 7 imprime bien to_string() del estado del primer nodo de la cola de prioridad
+	 pero no lo hace en el caso de si descomentamos la linia 27 porque a la cola de prioridad se bloquea sin dar explicacion
+
+->SEGUNDO
+Da violacion de segmento al acabar el programa, aun que no se haga nada. Eso no influye en el buen funcionamiento del susodicho.
+
+

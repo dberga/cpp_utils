@@ -1,0 +1,9 @@
+
+-canviar x++ per x+1 i x++ per x-1 i maskposX++ per maskposX+1 i maskposX-- per maskposX-1 i maskposY++ per maskposY+1 i maskposY-- per maskposY-1
+(donava violacio alguns cops perque al fer ++ al introduir com a argument a una funcio, anava restant o sumant, llavors se n'anava dels pixels)
+
+
+-canviar en el 4t for el "(fil-1)" per (col-1)
+
+
+
