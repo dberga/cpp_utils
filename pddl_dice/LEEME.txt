@@ -1,0 +1,8 @@
+Para compilar programa
+
+g++ -o app application.cpp
+
+Para ejecutar programa
+
+./app config-pddl/config.txt
+

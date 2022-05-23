@@ -1,0 +1,12 @@
+cara = num1
+cara = num2
+cara = num3
+cara = num4
+cara = num5
+cara = num6
+cara = num7
+cara = num8
+cara = num9
+cara = num10
+cara = num11
+cara = num12
