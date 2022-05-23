@@ -1,0 +1,49 @@
+<PLAYERS>
+    <PLAYER1>
+        <NAME>Jugador</NAME>
+        <ID>0</ID>
+        <LEFTGLOBE>players/player1/left_glove.png</LEFTGLOBE>
+        <RIGHTGLOBE>players/player1/right_glove.png</RIGHTGLOBE>
+        <LEFTFOOT>players/player1/left_foot.png</LEFTFOOT>
+        <RIGHTFOOT>players/player1/right_foot.png</RIGHTFOOT>
+        <FACE>players/player1/face.png</FACE>
+        <PROFILE>players/player1/profile.png</PROFILE>
+        <LIFE>250</LIFE>
+        <STAMINA>250</STAMINA>
+        <POWER>20</POWER>
+        <LG_ANIMATION_HIT1>players/player1/left_glove_a1.png</LG_ANIMATION_HIT1>
+        <LG_ANIMATION_HIT2>players/player1/left_glove_a2.png</LG_ANIMATION_HIT2>
+        <RG_ANIMATION_HIT1>players/player1/right_glove_a1.png</RG_ANIMATION_HIT1>
+        <RG_ANIMATION_HIT2>players/player1/right_glove_a2.png</RG_ANIMATION_HIT2>
+        <SOUND_GLASS>players/player1/glass.mp3</SOUND_GLASS>
+    </PLAYER1>
+</PLAYERS>
+
+<OPPONENTS>
+    <OPPONENT1>
+        <NAME>Dracula</NAME>
+        <ID>0</ID>
+        <ANIMATION1>opponents/opponent1/standard.png</ANIMATION1>
+        <ANIMATION2>opponents/opponent1/leftpunch.png</ANIMATION2>
+        <ANIMATION3>opponents/opponent1/rightpunch.png</ANIMATION3>
+        <ANIMATION4>opponents/opponent1/hurted.png</ANIMATION4>
+        <ANIMATION5>opponents/opponent1/gonnapunch.png</ANIMATION5>
+        <LEFTGLOBE>opponents/opponent1/left_glove.png</LEFTGLOBE>
+        <RIGHTGLOBE>opponents/opponent1/right_glove.png</RIGHTGLOBE>
+        <FACE>opponents/opponent1/face.png</FACE>
+        <LIFE>250</LIFE>
+        <STAMINA>250</STAMINA>
+        <POWER>20</POWER>
+        <SOUND_PUNCH1>opponents/opponent1/punch1.mp3</SOUND_PUNCH1>
+        <SOUND_PUNCH2>opponents/opponent1/punch2.mp3</SOUND_PUNCH2>
+    </OPPONENT1>
+</OPPONENTS>
+
+<BACKGROUNDS>
+    <SAND>
+        <NAME>SAND</NAME>
+        <ID>0</ID>
+        <PATH>backgrounds/sand/sand.PNG</PATH>
+        <SONG>backgrounds/sand/guile.mp3</SONG>
+    </SAND>
+</BACKGROUNDS>
